@@ -3,6 +3,11 @@
   background-size: cover;
   background-repeat:no-repeat;
   }
+  #reservation{
+  background-image: url(https://pix10.agoda.net/hotelImages/243/243421/243421_17062821340054129479.jpg?s=1024x768);
+  background-size: cover;
+  background-repeat:no-repeat;
+  }
 
 #formCheck { margin-left : 15%;
         margin-right: 5%;

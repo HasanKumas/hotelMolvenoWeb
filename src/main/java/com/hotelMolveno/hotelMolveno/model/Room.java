@@ -11,14 +11,21 @@ public class Room {
     @GeneratedValue
     private Long id;
 
-    final int MAX_NUM_OF_ROOMS = 200;
     private String roomSizeType;
     private String roomBudgetType;
     private String roomSceneType;
-    private  int roomNumber, maxBeds;
+    private Integer roomNumber, maxBeds;
     private LocalDateTime checkInTime, checkOutTime;
-    private boolean reserved, available;
-    private int roomPrice;
+    private Boolean reserved, available;
+    private Integer roomPrice;
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
 
     public String getRoomSizeType() {
         return roomSizeType;
@@ -44,19 +51,19 @@ public class Room {
         this.roomSceneType = roomSceneType;
     }
 
-    public int getRoomNumber() {
+    public Integer getRoomNumber() {
         return roomNumber;
     }
 
-    public void setRoomNumber(int roomNumber) {
+    public void setRoomNumber(Integer roomNumber) {
         this.roomNumber = roomNumber;
     }
 
-    public int getMaxBeds() {
+    public Integer getMaxBeds() {
         return maxBeds;
     }
 
-    public void setMaxBeds(int maxBeds) {
+    public void setMaxBeds(Integer maxBeds) {
         this.maxBeds = maxBeds;
     }
 
@@ -76,27 +83,27 @@ public class Room {
         this.checkOutTime = checkOutTime;
     }
 
-    public boolean getReserved() {
+    public Boolean getReserved() {
         return reserved;
     }
 
-    public void setReserved(boolean reserved) {
+    public void setReserved(Boolean reserved) {
         this.reserved = reserved;
     }
 
-    public boolean getAvailable() {
+    public Boolean getAvailable() {
         return available;
     }
 
-    public void setAvailable(boolean available) {
+    public void setAvailable(Boolean available) {
         this.available = available;
     }
 
-    public int getRoomPrice() {
+    public Integer getRoomPrice() {
         return roomPrice;
     }
 
-    public void setRoomPrice(int roomPrice) {
+    public void setRoomPrice(Integer roomPrice) {
         this.roomPrice = roomPrice;
     }
 }

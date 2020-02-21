@@ -11,6 +11,7 @@ import java.util.List;
 @RestController
 @RequestMapping("api/rooms")//end point
 public class RoomController {
+
     @Autowired//connect to database
     private RoomRepository roomRepository;
 

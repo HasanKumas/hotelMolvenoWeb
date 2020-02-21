@@ -3,6 +3,7 @@ package com.hotelMolveno.hotelMolveno.model;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @Entity
@@ -11,14 +12,15 @@ public class Room {
     @GeneratedValue
     private Long id;
 
-    final int MAX_NUM_OF_ROOMS = 200;
+    //final int MAX_NUM_OF_ROOMS = 200;
     private String roomSizeType;
     private String roomBudgetType;
     private String roomSceneType;
-    private  int roomNumber, maxBeds;
-    private LocalDateTime checkInTime, checkOutTime;
-    private boolean reserved, available;
-    private int roomPrice;
+    private  Integer roomNumber, maxBeds;
+    private LocalDate checkInDate, checkOutDate;
+    private Boolean available;
+    //private Boolean reserved;
+    private Integer roomPrice;
 
     public String getRoomSizeType() {
         return roomSizeType;
@@ -44,59 +46,67 @@ public class Room {
         this.roomSceneType = roomSceneType;
     }
 
-    public int getRoomNumber() {
+    public Integer getRoomNumber() {
         return roomNumber;
     }
 
-    public void setRoomNumber(int roomNumber) {
+    public void setRoomNumber(Integer roomNumber) {
         this.roomNumber = roomNumber;
     }
 
-    public int getMaxBeds() {
+    public Integer getMaxBeds() {
         return maxBeds;
     }
 
-    public void setMaxBeds(int maxBeds) {
+    public void setMaxBeds(Integer maxBeds) {
         this.maxBeds = maxBeds;
     }
 
-    public LocalDateTime getCheckInTime() {
-        return checkInTime;
+    public LocalDate getCheckInDate() {
+        return checkInDate;
     }
 
-    public void setCheckInTime(LocalDateTime checkInTime) {
-        this.checkInTime = checkInTime;
+    public void setCheckInDate (LocalDate checkInDate) {
+        this.checkInDate = checkInDate;
     }
 
-    public LocalDateTime getCheckOutTime() {
-        return checkOutTime;
+    public LocalDate getCheckOutDate() {
+        return checkOutDate;
     }
 
-    public void setCheckOutTime(LocalDateTime checkOutTime) {
-        this.checkOutTime = checkOutTime;
+    public void setCheckOutDate(LocalDate checkOutDate) {
+        this.checkOutDate = checkOutDate;
     }
 
-    public boolean getReserved() {
-        return reserved;
-    }
+//    public boolean getReserved() {
+//        return reserved;
+//    }
+//
+//    public void setReserved(boolean reserved) {
+//        this.reserved = reserved;
+//    }
 
-    public void setReserved(boolean reserved) {
-        this.reserved = reserved;
-    }
-
-    public boolean getAvailable() {
+    public Boolean getAvailable() {
         return available;
     }
 
-    public void setAvailable(boolean available) {
+    public void setAvailable(Boolean available) {
         this.available = available;
     }
 
-    public int getRoomPrice() {
+    public Integer getRoomPrice() {
         return roomPrice;
     }
 
-    public void setRoomPrice(int roomPrice) {
+    public void setRoomPrice(Integer roomPrice) {
         this.roomPrice = roomPrice;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 }

@@ -2,7 +2,6 @@ package com.hotelMolveno.hotelMolveno.controllers;
 
 import com.hotelMolveno.hotelMolveno.model.Room;
 import com.hotelMolveno.hotelMolveno.repositories.RoomRepository;
-import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -30,9 +29,9 @@ public class RoomController {
     }
 
     @PutMapping("/{id}")
-    public void updateRoom(@PathVariable("id") Room newRoom,  @RequestBody Room room){
-        BeanUtils.copyProperties(room, newRoom, "id");
-        roomRepository.save(newRoom);
+    public void updateRoom(@PathVariable("id") Long id,  @RequestBody Room room){
+        room.setId(id);
+        roomRepository.save(room);
     }
 
 }

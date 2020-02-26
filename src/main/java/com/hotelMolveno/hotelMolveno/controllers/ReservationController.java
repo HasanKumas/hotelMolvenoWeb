@@ -22,6 +22,7 @@ public class ReservationController {
 
     @PostMapping("/reservations")
     public void addReservation(@RequestBody Reservation reservation) {
+
         reservationRepository.save(reservation);
     }
 

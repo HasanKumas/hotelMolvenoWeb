@@ -21,8 +21,8 @@ public class GuestController {
     }
 
     @PostMapping
-    public void addGuest(@RequestBody Guest guest) {
-        guestRepository.save(guest);
+    public Long addGuest(@RequestBody Guest guest) {
+        return guestRepository.save(guest).getId();
     }
 
     @DeleteMapping("/{id}")

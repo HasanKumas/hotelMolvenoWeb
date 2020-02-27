@@ -1,79 +1,48 @@
 package com.hotelMolveno.hotelMolveno.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.OneToOne;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import org.springframework.format.annotation.DateTimeFormat;
+
+import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.time.LocalDate;
-import java.time.temporal.ChronoUnit;
+import java.util.ArrayList;
+import java.util.List;
+
+import static java.time.temporal.ChronoUnit.DAYS;
+
 
 @Entity
 public class Reservation {
     @Id
     @GeneratedValue
     private Long id;
-    private Integer reservationNumber;
-
-    private static int currentReservationNumber = 1;
-
-    // private Guest guest;
-    @OneToOne
-    private Room room;
-    // private List<Payment> payments;
-    private LocalDate checkInDate;
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    private LocalDate checkInDate = LocalDate.now();
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate checkOutDate;
     private Integer numOfGuests;
+    private Integer totalPrice;
 
+    @ManyToOne
+    private Room room;
+    @ManyToOne
+    private Guest guest;
 
-    public Reservation() {
-        this.reservationNumber = currentReservationNumber;
-        currentReservationNumber++;
+    // private List<Payment> payments;
+
+    public Integer totalPrice() {
+        long days = DAYS.between(checkInDate, checkOutDate);
+        return (int) days * room.getRoomPrice();
     }
 
-    public Integer getReservationNumber() {
-        return reservationNumber;
+    public Long getId() {
+        return id;
     }
 
-    public void setReservationNumber(Integer reservationNumber) {
-        this.reservationNumber = reservationNumber;
+    public void setId(Long id) {
+        this.id = id;
     }
-
-    public static int getCurrentReservationNumber() {
-        return currentReservationNumber;
-    }
-
-    public static void setCurrentReservationNumber(int currentReservationNumber) {
-        Reservation.currentReservationNumber = currentReservationNumber;
-    }
-
-    public void setNumOfGuests(Integer numOfGuests) {
-        this.numOfGuests = numOfGuests;
-    }
-
-
-    //  public Guest getGuest() {
-    //     return guest;
-    //  }
-//
-//        public void setGuest(Guest guest) {
-//            this.guest = guest;
-//        }
-
-    public Room getRoom() {
-        return room;
-    }
-
-    public void setRoom(Room room) {
-        this.room = room;
-    }
-
-//       // public List<Payment> getPayments() {
-//            return payments;
-//        }
-//
-//        public void setPayments(List<Payment> payments) {
-//            this.payments = payments;
-//        }
 
     public LocalDate getCheckInDate() {
         return checkInDate;
@@ -95,23 +64,32 @@ public class Reservation {
         return numOfGuests;
     }
 
-    public void setNumOfGuests(int numOfGuests) {
+    public void setNumOfGuests(Integer numOfGuests) {
         this.numOfGuests = numOfGuests;
     }
 
-    public Integer totalPrice() {
-        LocalDate checkIn = checkInDate;
-        LocalDate checkOut = checkOutDate;
-        long days = ChronoUnit.DAYS.between(checkIn, checkOut);
-        return (int) days * getRoom().getRoomPrice();
+    public Integer getTotalPrice() {
+        return totalPrice;
     }
 
-
-    public Long getId() {
-        return id;
+    public void setTotalPrice(Integer totalPrice) {
+        this.totalPrice = totalPrice;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public Room getRoom() {
+        return room;
     }
+
+    public void setRoom(Room room) {
+        this.room = room;
+    }
+
+    public Guest getGuest() {
+        return guest;
+    }
+
+    public void setGuest(Guest guest) {
+        this.guest = guest;
+    }
+
 }

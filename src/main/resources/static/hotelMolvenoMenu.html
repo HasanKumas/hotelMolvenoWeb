@@ -13,7 +13,7 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
     <!-- Local CSS and JS -->
     <link rel="stylesheet" type="text/css" href="\css\hotel.css">
-    <script src="js/main.js"></script>
+<!--    <script src="js/main.js"></script>-->
 
     <title>Hotel Molveno</title>
 </head>
@@ -27,7 +27,7 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
             <li class="nav-item active">
-                <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                <a class="nav-link" href="hotelMolvenoMenu.html">Home <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -40,7 +40,7 @@
                     <div class="dropdown-divider"></div>
                     <a class="dropdown-item" href="room.html">Rooms</a>
                     <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="#">Guests</a>
+                    <a class="dropdown-item" href="guest.html">Guests</a>
                     <div class="dropdown-divider"></div>
                 </div>
             </li>
@@ -54,25 +54,9 @@
         </form>
     </div>
 </nav>
-</br></br></br></br></br></br></br>
-<form id="formCheck">
-    <div class="row">
-        <div class="form-group col-md-4">
-            <label for="checkInDate">Check In Date</label>
-            <input type="date" class="form-control" id="checkInDate" placeholder="">
-        </div>
-        <div class="form-group col-md-4">
-            <label for="checkOutDate">Check Out Date</label>
-            <input type="date" class="form-control" id="checkOutDate" placeholder="">
-        </div>
-        <div class="form-group col-md-2">
-            <label for="numOfGuests">Guests</label>
-            <input type="number" class="form-control" id="numOfGuests" placeholder="2">
-        </div>
-        <div class="form-group col-md-1">
-            </br><button  type="button" class="btn btn-primary">Check Availability</button>
-        </div>
-    </div>
-</form>
+<br/><br/><br/>
+<div id="marq">
+    <marquee scrollamount="20" >WELCOME TO HOTEL MOLVENO</marquee>
+</div>
 </body>
 </html>

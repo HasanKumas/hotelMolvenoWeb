@@ -127,7 +127,7 @@ function completeReservation() {
        type: "POST",
        contentType: "application/json",
        data: jsonObject,
-       success: function () {
+       success: function (guestId) {
                    var reservation = {
                           checkInDate:$("#inputCheckIn").val(),
                           checkOutDate:$("#inputCheckOut").val(),
@@ -139,7 +139,7 @@ function completeReservation() {
                           //TODO find how an object in an object to post
                    //       data: { numOfGuests: document.getElementById("numOfGuests").value }
                           //,
-//                          guest:{get guest id}
+                          guest:{id: guestId}
                       };
 
                       var jsonObject = JSON.stringify(reservation);

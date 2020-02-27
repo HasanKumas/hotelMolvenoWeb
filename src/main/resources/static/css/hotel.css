@@ -53,3 +53,18 @@
       position:relative;
       top:1px;
     }
+    #payment{
+      background-image: url(https://www.federalreserve.gov/images/filmstrip-payment-systems.jpg);
+      background-size: cover;
+      background-repeat:no-repeat;
+    }
+    b{
+    color:red;
+    }
+    .btn btn-primary{
+    background-color:red;
+    }
+
+     thead{
+     color:red;
+     }

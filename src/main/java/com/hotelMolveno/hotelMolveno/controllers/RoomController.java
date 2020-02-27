@@ -1,6 +1,8 @@
 package com.hotelMolveno.hotelMolveno.controllers;
 
+import com.hotelMolveno.hotelMolveno.model.Payment;
 import com.hotelMolveno.hotelMolveno.model.Room;
+import com.hotelMolveno.hotelMolveno.repositories.PaymentRepository;
 import com.hotelMolveno.hotelMolveno.repositories.RoomRepository;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,7 +16,7 @@ public class RoomController {
     @Autowired//connect to database
     private RoomRepository roomRepository;
 
-    @GetMapping
+    @GetMapping("/Room")
     public List<Room> getRooms (){
         return roomRepository.findAll();
     }

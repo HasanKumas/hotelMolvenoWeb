@@ -10,7 +10,6 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/guests")//end point
-
 public class GuestController {
     @Autowired//connect to database
     private GuestRepository guestRepository;

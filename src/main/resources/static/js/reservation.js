@@ -136,10 +136,9 @@ function completeReservation() {
                           room: {
                                id: Number($("#inputRoomID").val())
                           },
-                          //TODO find how an object in an object to post
-                   //       data: { numOfGuests: document.getElementById("numOfGuests").value }
-                          //,
-                          guest:{id: guestId}
+                          guest:{
+                                id: guestId
+                                }
                       };
 
                       var jsonObject = JSON.stringify(reservation);
@@ -165,7 +164,7 @@ function completeReservation() {
    });
 }
 
-function deleteRooms() {
+function deleteReservations() {
    $('#tableInputRoom').hide();
    $("#saveButton").hide();
    $("#editButton").hide();
@@ -174,7 +173,7 @@ function deleteRooms() {
    $("#deleteInputTitle").show();
 }
 
-function deleteRoom() {
+function deleteReservation() {
    var id = $("#idInputReservation").val();
 
    $.ajax({
@@ -198,7 +197,7 @@ function changeRoomInput() {
 
 }
 
-function changeRoom() {
+function changeReservation() {
    var id = $("#idInputReservation").val();
    var room = {
                  checkInDate:$("#checkInDate").val(),

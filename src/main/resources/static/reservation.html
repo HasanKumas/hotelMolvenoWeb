@@ -6,9 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!--    Global CSS, JS, JQUERY, BOOTSTRAP, DATA TABLES-->
-    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css">
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css">
     <!--    <script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap.min.js"></script>-->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
           integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
@@ -85,7 +85,7 @@
 <br>
 <div class="container-fluid" id="tableContainer">
     <h1 style="color:white">AVAILABLE ROOMS</h1>
-    <table id="tableReservation" class="display" style="width:100%, color:white">
+    <table id="tableReservation" class="display" style="width:100%; color:white">
         <thead>
         <tr>
             <th>roomId</th>
@@ -106,87 +106,79 @@
     </table>
 </div>
 <div class="container" id="reservationContainer">
-    <form>
-        <div class="form-row">
-            <div class="form-group col-md-4">
-                <label for="inputCheckIn">Check In Date</label>
-                <input type="date" class="form-control" id="inputCheckIn" disabled>
-            </div>
-            <div class="form-group col-md-4">
-                <label for="inputCheckOut">Check Out Date</label>
-                <input type="date" class="form-control" id="inputCheckOut" disabled>
-            </div>
-            <div class="form-group col-md-4">
-                <label for="inputNumOfGuest">Number Of Guests</label>
-                <input type="number" class="form-control" id="inputNumOfGuest" disabled>
-            </div>
-            <div class="form-group col-md-4">
-                <label for="inputTotalFlex">Total Flexible Price</label>
-                <input type="number" class="form-control" id="inputTotalFlex">
-            </div>
-            <div class="form-group col-md-4">
-                <label for="inputRoomID">Room ID</label>
-                <input type="number" class="form-control" id="inputRoomID" disabled>
-            </div>
-            <div class="form-group col-md-4">
-                <label for="inputRoomNumber">Room Number</label>
-                <input type="number" class="form-control" id="inputRoomNumber" disabled>
-            </div>
+<form>
+    <div class="form-row">
+        <div class="form-group col-md-4">
+            <label for="inputCheckIn">Check In Date</label>
+            <input type="date" class="form-control" id="inputCheckIn" disabled>
         </div>
-        <div class="form-row">
-            <div class="form-group col-md-6">
-                <label for="inputLastName">Last Name</label>
-                <input type="text" class="form-control" id="inputLastName">
-            </div>
-            <div class="form-group col-md-6">
-                <label for="inputName">Name</label>
-                <input type="text" class="form-control" id="inputName">
-            </div>
+        <div class="form-group col-md-4">
+            <label for="inputCheckOut">Check Out Date</label>
+            <input type="date" class="form-control" id="inputCheckOut" disabled>
         </div>
-        <div class="form-row">
-            <div class="form-group col-md-6">
-                <label for="inputEmail">Email Address</label>
-                <input type="email" class="form-control" id="inputEmail">
-            </div>
-            <div class="form-group col-md-6">
-                <label for="inputPhone">Phone Number</label>
-                <input type="text" class="form-control" id="inputPhone">
-            </div>
+        <div class="form-group col-md-4">
+            <label for="inputNumOfGuest">Number Of Guests</label>
+            <input type="number" class="form-control" id="inputNumOfGuest" disabled>
         </div>
-        <div class="form-row">
-            <div class="form-group col-md-6">
-                <label for="inputIDType">ID Type</label>
-                <input type="text" class="form-control" id="inputIDType">
-            </div>
-            <div class="form-group col-md-6">
-                <label for="inputIDNumber">ID Number</label>
-                <input type="text" class="form-control" id="inputIDNumber">
-            </div>
+        <div class="form-group col-md-4">
+            <label for="inputTotalFlex">Total Flexible Price</label>
+            <input type="number" class="form-control" id="inputTotalFlex">
         </div>
-        <div class="form-group">
-            <label for="inputAddress">Address</label>
-            <input type="text" class="form-control" id="inputAddress" placeholder="Via Bettega 12">
+        <div class="form-group col-md-4">
+            <label for="inputRoomID">Room ID</label>
+            <input type="number" class="form-control" id="inputRoomID" disabled>
         </div>
-        <div class="form-row">
-            <div class="form-group col-md-6">
-                <label for="inputCity">City</label>
-                <input type="text" class="form-control" id="inputCity" placeholder="Molveno">
-            </div>
-            <div class="form-group col-md-2">
-                <label for="inputZip">Post Code</label>
-                <input type="text" class="form-control" id="inputZip" placeholder="38018">
-            </div>
+        <div class="form-group col-md-4">
+            <label for="inputRoomNumber">Room Number</label>
+            <input type="number" class="form-control" id="inputRoomNumber" disabled>
         </div>
-        <div class="form-group">
-            <div class="form-check">
-                <input class="form-check-input" type="checkbox" id="gridCheck">
-                <label class="form-check-label" for="gridCheck">
-                    Check me out
-                </label>
-            </div>
+    </div>
+    <div class="form-row">
+        <div class="form-group col-md-6">
+            <label for="inputLastName">Last Name</label>
+            <input type="text" class="form-control" id="inputLastName">
         </div>
-        <button type="button" class="btn btn-primary" id="completeReservationBtn">Complete Reservation</button>
-    </form>
+        <div class="form-group col-md-6">
+            <label for="inputName">Name</label>
+            <input type="text" class="form-control" id="inputName">
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="form-group col-md-6">
+            <label for="inputEmail">Email Address</label>
+            <input type="email" class="form-control" id="inputEmail">
+        </div>
+        <div class="form-group col-md-6">
+            <label for="inputPhone">Phone Number</label>
+            <input type="text" class="form-control" id="inputPhone">
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="form-group col-md-6">
+            <label for="inputIDType">ID Type</label>
+            <input type="text" class="form-control" id="inputIDType">
+        </div>
+        <div class="form-group col-md-6">
+            <label for="inputIDNumber">ID Number</label>
+            <input type="text" class="form-control" id="inputIDNumber">
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="inputAddress">Address</label>
+        <input type="text" class="form-control" id="inputAddress" placeholder="Via Bettega 12">
+    </div>
+    <div class="form-row">
+        <div class="form-group col-md-6">
+            <label for="inputCity">City</label>
+            <input type="text" class="form-control" id="inputCity" placeholder="Molveno">
+        </div>
+        <div class="form-group col-md-2">
+            <label for="inputZip">Post Code</label>
+            <input type="text" class="form-control" id="inputZip" placeholder="38018">
+        </div>
+    </div>
+    <button type="button" class="btn btn-primary" id="completeReservationBtn">Complete Reservation</button>
+</form>
 </div>
 </body>
 </html>

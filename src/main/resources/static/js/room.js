@@ -52,7 +52,7 @@ function postRoom() {
        contentType: "application/json",
        data: jsonObject,
        success: function () {
-           alert('We succeeded!');
+           alert('The room has created!');
            $("#roomNumber").val('');
            $("#maxBeds").val('');
            $("#roomAvailability").val('');
@@ -60,6 +60,7 @@ function postRoom() {
            $("#roomSize").val('');
            $("#roomBudget").val('');
            $("#roomScene").val('');
+           getRooms();
        },
        error: function () {
            alert('try again');
@@ -76,13 +77,14 @@ function deleteRooms() {
 }
 function deleteRoom() {
    var id = $("#idInput").val();
-
+//TODO how to delete a room without deleting the reservation/currently throwing constraint violation
    $.ajax({
-       url: "api/rooms/" + id,
+       url: "api/rooms/"+id,
        type: "DELETE",
        success: function() {
-           alert('We succeeded!');
+           alert('The room has deleted!');
            $("#idInput").val('');
+           getRooms();
        }
    });
 }
@@ -115,7 +117,7 @@ function changeRoom() {
       contentType: "application/json",
       data: jsonObject,
       success: function () {
-         alert('We succeeded!');
+         alert('The room has modified!');
          $("#roomNumber").val('');
          $("#maxBeds").val('');
          $("#roomAvailability").val('');
@@ -123,6 +125,8 @@ function changeRoom() {
          $("#roomSize").val('');
          $("#roomBudget").val('');
          $("#roomScene").val('');
+         $("#idInput").val('');
+         getRooms();
       },
       error: function () {
           alert('try again');

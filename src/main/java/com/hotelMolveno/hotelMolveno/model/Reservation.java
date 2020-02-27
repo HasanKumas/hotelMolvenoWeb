@@ -1,5 +1,6 @@
 package com.hotelMolveno.hotelMolveno.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
@@ -24,13 +25,9 @@ public class Reservation {
     private Integer totalPrice;
 
     @ManyToOne
-   // @NotNull
     private Room room;
     @ManyToOne
-    //@NotNull
     private Guest guest;
-//    @OneToMany(mappedBy = "reservation")
-//    private List<Guest> guests = new ArrayList<>();
 
     // private List<Payment> payments;
 
@@ -38,14 +35,6 @@ public class Reservation {
         long days = DAYS.between(checkInDate, checkOutDate);
         return (int) days * room.getRoomPrice();
     }
-
-//    public List<Guest> getGuests() {
-//        return guests;
-//    }
-//
-//    public void setGuests(List<Guest> guests) {
-//        this.guests = guests;
-//    }
 
     public Long getId() {
         return id;
@@ -102,4 +91,5 @@ public class Reservation {
     public void setGuest(Guest guest) {
         this.guest = guest;
     }
+
 }

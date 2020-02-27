@@ -30,7 +30,7 @@ function postRoomInput() {
     $("#deleteInputTitle").hide();
     $("#deleteBtn").hide();
     $("#editButton").hide();
-    $('#tableShowRoom').hide();
+//    $('#tableShowRoom').hide();
     $("#idInput").hide();
 }
 function postRoom() {
@@ -93,7 +93,7 @@ function changeRoomInput() {
         $("#idInput").show();
         $("#deleteBtn").hide();
         $("#saveButton").hide();
-        $('#tableShowRoom').hide();
+//        $('#tableShowRoom').hide();
 
 }
 function changeRoom() {
@@ -130,7 +130,8 @@ function changeRoom() {
    });
 }
 $(document).ready(function () {
-       $("#getButton").click(getRooms);
+        getRooms();
+//       $("#getButton").click(getRooms);
        $("#saveButton").click(postRoom);
        $("#postInputButton").click(postRoomInput);
        $("#deleteButton").click(deleteRooms);

@@ -1,9 +1,10 @@
 package com.hotelMolveno.hotelMolveno.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 public class Guest {
@@ -19,16 +20,17 @@ public class Guest {
     private String idType;
     private String idValue;
 
-//    @ManyToOne
-//    private Reservation reservation;
-//
-//    public Reservation getReservation() {
-//        return reservation;
-//    }
-//
-//    public void setReservation(Reservation reservation) {
-//        this.reservation = reservation;
-//    }
+    @OneToMany(mappedBy = "guest")
+    @JsonIgnore
+    private List<Reservation> reservations = new ArrayList<>();
+
+    public List<Reservation> getReservations() {
+        return reservations;
+    }
+
+    public void setReservations(List<Reservation> reservations) {
+        this.reservations = reservations;
+    }
 
     public Long getId() {
         return id;

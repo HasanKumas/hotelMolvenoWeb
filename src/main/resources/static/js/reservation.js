@@ -42,11 +42,6 @@ window.onload = function() {
 function getRooms() {
     $("#tableReservation").dataTable().fnDestroy();
     $('#tableContainer').show();
-//    var avrooms = $.ajax({
-//         type: "POST",
-//         url: "api/availableRooms",
-//         data: { numOfGuests: document.getElementById("numOfGuests").value } // parameters
-//    });
 
     var table1 = $('#tableReservation').DataTable({
             ajax :{
@@ -79,42 +74,21 @@ function getRooms() {
                 { data: "reserve"}
             ]
     });
-    //TODO check why this button does not work when check availability button refresh or pressed again "reservation.js:86 Uncaught TypeError: Cannot read property 'totalPrice' of undefined"
-    $('#tableReservation tbody').on( 'click', 'button', function () {
-        console.log('Hiii');
-        console.log(table1.row($(this).parents('tr')));
+
+    $('#tableReservation tbody').off().on( 'click', 'button', function () {
+            console.log(table1.row($(this).parents('tr')));
             var data1 = table1.row( $(this).parents('tr') ).data();
-            console.log(data1);
-            alert("This is: "+ data1.totalPrice );
             $('#tableContainer').hide();
             $('#reservationContainer').show();
             document.getElementById("inputCheckIn").value = document.getElementById("checkInDate").value;
             document.getElementById("inputCheckOut").value = document.getElementById("checkOutDate").value;
-           document.getElementById("inputNumOfGuest").value = document.getElementById("numOfGuests").value;;
-           document.getElementById("inputTotalFlex").value = data1.totalPrice;
-           document.getElementById("inputRoomID").value = data1.id;
-           document.getElementById("inputRoomNumber").value = data1.roomNumber;
+            document.getElementById("inputNumOfGuest").value = document.getElementById("numOfGuests").value;;
+            document.getElementById("inputTotalFlex").value = data1.totalPrice;
+            document.getElementById("inputRoomID").value = data1.id;
+            document.getElementById("inputRoomNumber").value = data1.roomNumber;
 
     });
-
 }
-//function reserveButton(){
-//
-//        console.log('Hiii');
-//        console.log(table1.row($(this).parents('tr')));
-//            var data1 = table1.row( $(this).parents('tr') ).data();
-//            console.log(data1);
-//            alert("This is: "+ data1.totalPrice );
-//            $('#tableContainer').hide();
-//            $('#reservationContainer').show();
-//            document.getElementById("inputCheckIn").value = document.getElementById("checkInDate").value;
-//            document.getElementById("inputCheckOut").value = document.getElementById("checkOutDate").value;
-//           document.getElementById("inputNumOfGuest").value = document.getElementById("numOfGuests").value;;
-//           document.getElementById("inputTotalFlex").value = data1.totalPrice;
-//           document.getElementById("inputRoomID").value = data1.id;
-//           document.getElementById("inputRoomNumber").value = data1.roomNumber;
-//
-//    }
 
 function getReservations() {
     $('#tableReservation').show();
@@ -135,43 +109,6 @@ function getReservations() {
 }
 
 function completeReservation() {
-   postGuest();
-   postReservation();
-   //TODO check how to execute function one after another alert function works first!!!
-   alert('The room reserved...');
-}
-
-function postReservation() {
-   var reservation = {
-       checkInDate:$("#inputCheckIn").val(),
-       checkOutDate:$("#inputCheckOut").val(),
-       numOfGuests:Number($("#inputNumOfGuest").val()),
-       totalPrice:Number($("#inputTotalFlex").val()),
-       room: {
-            id: Number($("#inputRoomID").val())
-       }
-       //TODO find how an object in an object to post
-//       data: { numOfGuests: document.getElementById("numOfGuests").value }
-       //,
-//       guest:$("#inputGuestID").val()
-   };
-
-   var jsonObject = JSON.stringify(reservation);
-
-   $.ajax({
-       url: "api/reservations",
-       type: "POST",
-       contentType: "application/json",
-       data: jsonObject,
-       success: function () {
-           alert('We succeeded for reservation!');
-       },
-       error: function () {
-           alert('try again for reservation');
-       }
-   });
-}
-function postGuest() {
    var guest = {
        lastName:$("#inputLastName").val(),
        firstName:$("#inputName").val(),
@@ -191,7 +128,36 @@ function postGuest() {
        contentType: "application/json",
        data: jsonObject,
        success: function () {
-           alert('We succeeded for the guest!');
+                   var reservation = {
+                          checkInDate:$("#inputCheckIn").val(),
+                          checkOutDate:$("#inputCheckOut").val(),
+                          numOfGuests:Number($("#inputNumOfGuest").val()),
+                          totalPrice:Number($("#inputTotalFlex").val()),
+                          room: {
+                               id: Number($("#inputRoomID").val())
+                          }
+                          //TODO find how an object in an object to post
+                   //       data: { numOfGuests: document.getElementById("numOfGuests").value }
+                          //,
+//                          guest:{get guest id}
+                      };
+
+                      var jsonObject = JSON.stringify(reservation);
+
+                      $.ajax({
+                          url: "api/reservations",
+                          type: "POST",
+                          contentType: "application/json",
+                          data: jsonObject,
+                          success: function () {
+//                              alert('We succeeded for reservation!');
+                          },
+                          error: function () {
+//                              alert('try again for reservation');
+                          }
+                      });
+                       alert('The room number '+ document.getElementById("inputRoomNumber").value+ " reserved for "+ $("#inputLastName").val()+ " "+ $("#inputName").val()+ ". The total price is: "+ $("#inputTotalFlex").val());
+                       $("#reservationContainer").hide();
        },
        error: function () {
            alert('try again');
@@ -261,6 +227,4 @@ function changeRoom() {
 $(document).ready(function () {
        $("#checkAvailabilityBtn").click(getRooms);
        $("#completeReservationBtn").click(completeReservation);
-//       $('#reserveButton').click(reserveButton);
-//       $('#tableReservation tbody').click(reserveButton);
 });

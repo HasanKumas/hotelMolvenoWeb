@@ -23,8 +23,8 @@
     font-weight: bold;
 }
 #reservationContainer{
-    background:rgba(0, 128, 128,0.7);
-    font-color: white;
+    background:rgb(153, 153, 153);
+
     display: none;
 }
 

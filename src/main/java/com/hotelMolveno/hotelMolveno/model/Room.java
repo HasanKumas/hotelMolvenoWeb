@@ -1,5 +1,7 @@
 package com.hotelMolveno.hotelMolveno.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -20,8 +22,9 @@ public class Room {
     private Integer roomPrice;
     private Boolean isAvailable;
 
-//    @OneToMany (mappedBy = "room")
-//    private List<Reservation> reservations = new ArrayList<>();
+    @OneToMany (mappedBy = "room")
+    @JsonIgnore
+    private List<Reservation> reservations = new ArrayList<>();
 
     public Long getId() {
         return id;
@@ -87,11 +90,19 @@ public class Room {
         this.isAvailable = isAvailable;
     }
 
-//    public List<Reservation> getReservations() {
-//        return reservations;
-//    }
-//
-//    public void setReservations(List<Reservation> reservations) {
-//        this.reservations = reservations;
-//    }
+    public Boolean getAvailable() {
+        return isAvailable;
+    }
+
+    public void setAvailable(Boolean available) {
+        isAvailable = available;
+    }
+
+    public List<Reservation> getReservations() {
+        return reservations;
+    }
+
+    public void setReservations(List<Reservation> reservations) {
+        this.reservations = reservations;
+    }
 }

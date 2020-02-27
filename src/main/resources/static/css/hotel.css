@@ -2,19 +2,32 @@
   background-image: url(https://cdn.sbcdn.it/fu/newbooking_tmpl/763323_IMG_ASF.jpg);
   background-size: cover;
   background-repeat:no-repeat;
+}
+ #reservation{
+  background-image: url(https://pix10.agoda.net/hotelImages/243/243421/243421_17062821340054129479.jpg?s=1024x768);
+  background-size: cover;
+  background-repeat:no-repeat;
   }
-
-#formCheck { margin-left : 15%;
-        margin-right: 5%;
-       margin-top: auto;
+#formCheck {
        background-color: rgba(51, 170, 51, .4);
-       width: auto;
-       align-content: center;
-       position: relative;
        font-size: 20px;
        color:white;
        font-weight: bold;
-     }
+}
+#marq{
+
+    font-size:70px;
+    color: red;
+    font-family: sans-serif, "Helvetica Neue", "Lucida Grande", Arial;
+    font-stretch: expanded;
+    font-weight: bold;
+}
+#reservationContainer{
+    background:rgb(153, 153, 153);
+
+    display: none;
+}
+
 #formRooms{
         margin-left : 5%;
         margin-right: 5%;
@@ -26,30 +39,60 @@
          font-size: 20px;
          color:white;
          font-weight: bold;
-    }
-    .roomButtons {
-          box-shadow: 1px 1px 1px 1px #4b4b4b;
-          background: linear-gradient(to bottom, rgba(150,210,250,0.1), rgba(75, 250, 100, 0.1));
+}
 
-          border-radius:10px;
-          text-align:center;
-          border:1px  rgba(255,155,0,0.1);
-          display:inline-block;
-          cursor:pointer;
-          color:#ff0000;
-          font-family:Arial;
-          font-size:19px;
-          font-weight:bold;
-          padding:12px 37px;
-          text-decoration:none;
-          text-shadow:0px 1px 0px #283966;
-          width: 200px;
-        }
-  .roomButtons:hover {
-      background:linear-gradient(to bottom, #800000 5%, #823000 100%);
-      background-color:#800000;
-    }
-  .roomButtons:active {
-      position:relative;
-      top:1px;
-    }
+.roomButtons {
+      box-shadow: 1px 1px 1px 1px #4b4b4b;
+      background: linear-gradient(to bottom, rgba(150,210,250,0.1), rgba(75, 250, 100, 0.1));
+
+      border-radius:10px;
+      text-align:center;
+      border:1px  rgba(255,155,0,0.1);
+      display:inline-block;
+      cursor:pointer;
+      color:#ff0000;
+      font-family:Arial;
+      font-size:19px;
+      font-weight:bold;
+      padding:12px 37px;
+      text-decoration:none;
+      text-shadow:0px 1px 0px #283966;
+      width: 200px;
+}
+
+.roomButtons:hover {
+  background:linear-gradient(to bottom, #800000 5%, #823000 100%);
+  background-color:#800000;
+}
+
+.roomButtons:active {
+  position:relative;
+  top:1px;
+}
+
+#tableInputRoom{
+    display:none;
+}
+#tableShowRoom{
+    display:none;
+}
+
+#saveButton{
+    display:none;
+}
+#idInput{
+    display:none;
+}
+#deleteBtn{
+    display:none;
+}
+#deleteInputTitle{
+    display:none;
+}
+#editButton{
+    display:none;
+}
+#tableContainer{
+    display:none;
+    background:#ADD8E6;
+}

@@ -26,7 +26,7 @@ public class ReservationController {
         reservationRepository.save(reservation);
     }
 
-    @DeleteMapping("/reservation/{id}")
+    @DeleteMapping("/reservations/{id}")
     void deleteReservation(@PathVariable Long id) {
         reservationRepository.deleteById(id);
     }

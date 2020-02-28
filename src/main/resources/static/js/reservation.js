@@ -1,3 +1,4 @@
+var reservationList
 function getDate() {
   var today = new Date();
   var dd = today.getDate();
@@ -42,6 +43,7 @@ window.onload = function() {
 function getRooms() {
     $("#tableReservation").dataTable().fnDestroy();
     $('#tableContainer').show();
+
 
     var table1 = $('#tableReservation').DataTable({
             ajax :{
@@ -91,19 +93,23 @@ function getRooms() {
 }
 
 function getReservations() {
-    $('#tableReservation').show();
-    $('#tableReservation').DataTable({
-        ajax: {
+    $("#tableReservationList").dataTable().fnDestroy();
+    $('#reservationListContainer').show();
+    $('#tableReservationList').show();
+    reservationList = $('#tableReservationList').DataTable({
+         ajax: {
             url: "api/reservations",
             dataSrc: ''
         },
         "columns": [
             { "data": "id" },
+            { "data": "guest.lastName"},
+            { "data": "room.roomNumber"},
             { "data": "checkInDate" },
             { "data": "checkOutDate" },
             { "data": "numOfGuests" },
-            { "data": "totalPrice" },
-            { "data": "room" }
+            { "data": "totalPrice" }
+
         ]
     });
 }
@@ -136,10 +142,9 @@ function completeReservation() {
                           room: {
                                id: Number($("#inputRoomID").val())
                           },
-                          //TODO find how an object in an object to post
-                   //       data: { numOfGuests: document.getElementById("numOfGuests").value }
-                          //,
-                          guest:{id: guestId}
+                          guest:{
+                                id: guestId
+                                }
                       };
 
                       var jsonObject = JSON.stringify(reservation);
@@ -165,7 +170,7 @@ function completeReservation() {
    });
 }
 
-function deleteRooms() {
+function deleteReservations() {
    $('#tableInputRoom').hide();
    $("#saveButton").hide();
    $("#editButton").hide();
@@ -174,7 +179,7 @@ function deleteRooms() {
    $("#deleteInputTitle").show();
 }
 
-function deleteRoom() {
+function deleteReservation() {
    var id = $("#idInputReservation").val();
 
    $.ajax({
@@ -198,7 +203,7 @@ function changeRoomInput() {
 
 }
 
-function changeRoom() {
+function changeReservation() {
    var id = $("#idInputReservation").val();
    var room = {
                  checkInDate:$("#checkInDate").val(),
@@ -226,5 +231,6 @@ function changeRoom() {
 
 $(document).ready(function () {
        $("#checkAvailabilityBtn").click(getRooms);
+       $("#showReservations").click(getReservations);
        $("#completeReservationBtn").click(completeReservation);
 });

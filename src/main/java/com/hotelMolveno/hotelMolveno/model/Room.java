@@ -1,6 +1,7 @@
 package com.hotelMolveno.hotelMolveno.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import org.springframework.lang.Nullable;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;

@@ -27,6 +27,10 @@
 
     display: none;
 }
+#reservationListContainer{
+    display:none;
+    background:#ADD8E6;
+}
 
 #formRooms{
         margin-left : 5%;
@@ -96,3 +100,8 @@
     display:none;
     background:#ADD8E6;
 }
+#payment{
+      background-image: url(https://www.federalreserve.gov/images/filmstrip-payment-systems.jpg);
+      background-size: cover;
+      background-repeat:no-repeat;
+    }

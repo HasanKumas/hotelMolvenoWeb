@@ -1,3 +1,5 @@
+var guestDataTable;
+
 function getGuests() {
     $("#tableShowGuest").dataTable().fnDestroy();
     $('#tableInputGuest').hide();
@@ -7,7 +9,7 @@ function getGuests() {
     $("#deleteBtn").hide();
     $("#editBtn").hide();
     $('#tableShowGuest').show();
-    $('#tableShowGuest').DataTable({
+    guestDataTable = $('#tableShowGuest').DataTable({
         ajax: {
             url: "api/guests",
             dataSrc: ''
@@ -42,6 +44,10 @@ function deleteGuest() {
        success: function() {
            alert('We succeeded!');
            $("#idInput").val('');
+           guestDataTable.ajax.reload();
+       },
+       error: function() {
+        alert('something went wrong!');
        }
    });
 }
@@ -83,6 +89,7 @@ function changeGuest() {
          $("#address").val('');
          $("#idType").val('');
          $("#idValue").val('');
+          guestDataTable.ajax.reload();
       },
       error: function () {
           alert('try again');

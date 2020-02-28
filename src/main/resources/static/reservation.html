@@ -80,9 +80,14 @@
             <br/>
             <button type="button" class="btn btn-primary" id="checkAvailabilityBtn">Check Availability</button>
         </div>
+        <div class="container" style="float:right">
+            <button type="button" class="btn btn-primary" id="showReservations" >Show Reservation List</button>
+        </div>
     </div>
 </div>
 <br>
+
+
 <div class="container-fluid" id="tableContainer">
     <h1 style="color:white">AVAILABLE ROOMS</h1>
     <table id="tableReservation" class="display" style="width:100%, color:white">
@@ -93,6 +98,30 @@
             <th>roomBudgetType</th>
             <th>roomSceneType</th>
             <th>Number Of Beds</th>
+            <th>Total Price</th>
+            <th></th>
+            <!--        <th><input id="flexPrice" type="Number" placeholder="Flex Price"/>Flexible Price</th>-->
+            <!--        <th>checkInDate</th>-->
+            <!--        <th>checkOutDate</th>-->
+            <!--        <th>-->
+            <!--            <button type="button">reserve</button>-->
+            <!--        </th>-->
+        </tr>
+        </thead>
+    </table>
+</div>
+
+<div class="container-fluid" id="reservationListContainer">
+    <h1 style="color:white">RESERVATION LIST</h1>
+    <table id="tableReservationList" class="display" style="width:100%, color:white">
+        <thead>
+        <tr>
+            <th>Reservation Number</th>
+            <th>Guest Name</th>
+            <th>Room Number</th>
+            <th>Check In Date</th>
+            <th>Check Out Date</th>
+            <th>Number Of Guests</th>
             <th>Total Price</th>
             <th></th>
             <!--        <th><input id="flexPrice" type="Number" placeholder="Flex Price"/>Flexible Price</th>-->

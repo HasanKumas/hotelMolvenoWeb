@@ -135,7 +135,7 @@ function completeReservation() {
                           totalPrice:Number($("#inputTotalFlex").val()),
                           room: {
                                id: Number($("#inputRoomID").val())
-                          }
+                          },
                           //TODO find how an object in an object to post
                    //       data: { numOfGuests: document.getElementById("numOfGuests").value }
                           //,

@@ -139,4 +139,3 @@ $(document).ready(function () {
        $("#editButton").click(changeRoom);
        $("#editInputButton").click(changeRoomInput);
 });
-

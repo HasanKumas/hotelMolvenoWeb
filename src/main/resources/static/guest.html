@@ -1,23 +1,25 @@
 <!doctype html>
 <html lang="en">
 <head>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
-          integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-    <link rel="stylesheet" type="text/css" href="\css\hotel.css">
 
-
-    <script src="js/guest.js"></script> <script src="https://code.jquery.com/jquery-3.4.1.min.js" crossorigin="anonymous"></script>
-    <!-- <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script> -->
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
-            integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
-            crossorigin="anonymous"></script>
-    <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
+    <!--    Global CSS, JS, JQUERY, BOOTSTRAP, DATA TABLES-->
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css">
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+          integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+            integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+            crossorigin="anonymous"></script>
+    <!-- Local CSS and JS -->
+    <link rel="stylesheet" type="text/css" href="\css\hotel.css">
+    <script src="js/guest.js"></script>
     <!-- Bootstrap CSS -->
 
-    <title>Hotel Molveno Rooms</title>
+    <title>Hotel Molveno Guests</title>
 </head>
 <body>
 <nav class="navbar navbar-expand-lg navbar-light bg-light" style="background-color: #e3f2fd;">
@@ -30,7 +32,7 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
             <li class="nav-item">
-                <a class="nav-link" href="HotelMolvenoMenu.html">Home</a>
+                <a class="nav-link" href="hotelMolvenoMenu.html">Home</a>
             </li>
             <li class="nav-item dropdown active">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
@@ -38,13 +40,13 @@
                     Menu<span class="sr-only">(current)</span>
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="#">Reservation</a>
+                    <a class="dropdown-item" href="reservation.html">Reservation</a>
                     <div class="dropdown-divider"></div>
                     <a class="dropdown-item" href="#">Payment</a>
                     <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="#">Rooms</a>
+                    <a class="dropdown-item" href="room.html">Rooms</a>
                     <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="#">Guests</a>
+                    <a class="dropdown-item" href="guest.html">Guests</a>
                     <div class="dropdown-divider"></div>
                 </div>
             </li>
@@ -58,9 +60,16 @@
         </form>
     </div>
 </nav>
-<br/>
+<div id="rooms">
+    <img src="https://q-cf.bstatic.com/images/hotel/max1280x900/492/49213300.jpg"
+         style="margin-left: 3%; width:480px;height:480px;">
+    <img src="https://aff.bstatic.com/images/hotel/max1024x768/692/69233445.jpg"
+         style="align-content: right; width:460px;height:480px;">
+    <img src="https://www.gardenhotelbellariva.com/wp-content/uploads/2018/04/Bar-giardino-Hotel-Bellariva-Molveno_01-1500x810.jpg"
+         style="align-content: right; margin-right:3%; width:460px;height:480px;">
+</div>
 
-<div class="input-group mb-3" style="width:50%">
+<!--<div class="input-group mb-3" style="width:50%">
 
     <div class="input-group-prepend">
         <span class="input-group-text" >First Name</span>
@@ -113,7 +122,7 @@
         <span class="input-group-text" >Id Value</span>
     </div>
     <input type="text" id="Id_Value" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default"/>
-</div>
+</div>-->
 
 
 
@@ -123,40 +132,65 @@
     <div class="row">
         <div class="form-group col-md-2">
             </br>
-            <button id="create" type="button" class="btn btn-primary btn-lg roomButtons">Create Guest</button>
+            <button id="deleteButton" type="button" class="btn btn-primary btn-lg roomButtons">Delete Guest</button>
         </div>
         <div class="form-group col-md-2">
             </br>
-            <button type="button" class="btn btn-primary btn-lg roomButtons">Save</button>
-        </div>
-        <div class="form-group col-md-2">
-            </br>
-            <button type="button" class="btn btn-primary btn-lg roomButtons">Cancel</button>
+            <button id="editInputButton" type="button" class="btn btn-primary btn-lg roomButtons">Edit Guest</button>
         </div>
 
     </div>
 </form>
 <!-- Optional JavaScript -->
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-<div id="guests"></div>
-<table class="u-full-width table">
+
+<table id="tableInputGuest" class="display" style="width:100%">
     <thead>
     <tr>
-        <th>ID</th>
-        <th>name</th>
-        <th>last name</th>
-        <th>phone</th>
+        <th>firstName</th>
+        <th>lastName</th>
+        <th>tel</th>
         <th>email</th>
         <th>address</th>
-        <th>id type</th>
-        <th>id value</th>
-
+        <th>idType</th>
+        <th>idValue</th>
     </tr>
     </thead>
-    <tbody id="guest-list">
-
+    <tbody>
+    <tr>
+        <td><input id="firstName" type="text" placeholder="First Name"/></td>
+        <td><input id="lastName" type="text" placeholder="Last Name"/></td>
+        <td><input id="tel" type="text" placeholder="tel"/></td>
+        <td><input id="email" type="text" placeholder="Email"/></td>
+        <td><input id="address" type="text" placeholder="Address"/></td>
+        <td><input id="idType" type="text" placeholder="Id Type"/></td>
+        <td><input id="idValue" type="text" placeholder="Id Value"/></td>
+    </tr>
     </tbody>
 </table>
+
+
+
+<b id="deleteInputTitle">Enter id number of the Guest:</b><input id="idInput" type="Number" placeholder="id"/>
+<button id="deleteBtn" type="button" class="guestButtons btn btn-primary btn-lg">Delete</button>
+<button id="editBtn" type="button" class="guestButtons btn btn-primary btn-lg">Save</button>
+
+
+<table id="tableShowGuest" class="display" >
+    <thead>
+    <tr>
+        <th>id</th>
+        <th>firstName</th>
+        <th>lastName</th>
+        <th>tel</th>
+        <th>email</th>
+        <th>address</th>
+        <th>idType</th>
+        <th>idValue</th>
+    </tr>
+    </thead>
+</table>
+
 
 </body>
 </html>

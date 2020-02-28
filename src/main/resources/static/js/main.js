@@ -14,7 +14,7 @@ function getPayment() {
             '<tr><td>' + payment.name + '</td>'+
             '<td>'+ payment.cardNumber + '</td>'+
             '<td>' + payment.billAddress + '</td>'+
-            '<td>' + payment.cardExpiryDate + '</td></tr>'
+            '<td>' + payment.cardExpiryDate +'</td></tr>'
             );
 
 //            const list = document.getElementById('paymentes-list');
@@ -39,7 +39,8 @@ function postPayment() {
         name: $("#nameInput").val(),
         cardNumber:$("#NOInput").val(),
         billAddress:$("#BillInput").val(),
-        cardExpiryDate:$("#expiryInput").val()
+        cardExpiryDate:$("#expiryInput").val(),
+       // pay_Type:$("#typeInput")
 
     };
 
@@ -57,6 +58,7 @@ function postPayment() {
                 $("#NOInput").val('');
                 $("#BillInput").val('');
                 $("#expiryInput").val('');
+               // $("typeInput").val('');
                 getPayment();
             },
             error: function () {

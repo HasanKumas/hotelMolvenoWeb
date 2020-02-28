@@ -16,7 +16,7 @@ function getRooms() {
             { "data": "id" },
             { "data": "roomNumber" },
             { "data": "maxBeds" },
-            { "data": "isAvailable" },
+//            { "data": "isAvailable" },
             { "data": "roomPrice" },
             { "data": "roomSizeType" },
             { "data": "roomBudgetType" },
@@ -37,7 +37,7 @@ function postRoom() {
    var room = {
        roomNumber:Number($("#roomNumber").val()),
        maxBeds:Number($("#maxBeds").val()),
-       isAvailable:Boolean($("#roomAvailability").val()),
+//       isAvailable:Boolean($("#roomAvailability").val()),
        roomPrice:Number($("#roomPrice").val()),
        roomSizeType:$("#roomSize").val(),
        roomBudgetType:$("#roomBudget").val(),
@@ -55,7 +55,7 @@ function postRoom() {
            alert('The room has created!');
            $("#roomNumber").val('');
            $("#maxBeds").val('');
-           $("#roomAvailability").val('');
+//           $("#roomAvailability").val('');
            $("#roomPrice").val('');
            $("#roomSize").val('');
            $("#roomBudget").val('');
@@ -103,7 +103,7 @@ function changeRoom() {
    var room = {
                  roomNumber:Number($("#roomNumber").val()),
                  maxBeds:Number($("#maxBeds").val()),
-                 isAvailable:Boolean($("#roomAvailability").val()),
+//                 isAvailable:Boolean($("#roomAvailability").val()),
                  roomPrice:Number($("#roomPrice").val()),
                  roomSizeType:$("#roomSize").val(),
                  roomBudgetType:$("#roomBudget").val(),
@@ -120,7 +120,7 @@ function changeRoom() {
          alert('The room has modified!');
          $("#roomNumber").val('');
          $("#maxBeds").val('');
-         $("#roomAvailability").val('');
+//         $("#roomAvailability").val('');
          $("#roomPrice").val('');
          $("#roomSize").val('');
          $("#roomBudget").val('');

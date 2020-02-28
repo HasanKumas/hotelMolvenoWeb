@@ -1,3 +1,4 @@
+var reservationList
 function getDate() {
   var today = new Date();
   var dd = today.getDate();
@@ -42,6 +43,7 @@ window.onload = function() {
 function getRooms() {
     $("#tableReservation").dataTable().fnDestroy();
     $('#tableContainer').show();
+
 
     var table1 = $('#tableReservation').DataTable({
             ajax :{
@@ -91,19 +93,23 @@ function getRooms() {
 }
 
 function getReservations() {
-    $('#tableReservation').show();
-    $('#tableReservation').DataTable({
-        ajax: {
+    $("#tableReservationList").dataTable().fnDestroy();
+    $('#reservationListContainer').show();
+    $('#tableReservationList').show();
+    reservationList = $('#tableReservationList').DataTable({
+         ajax: {
             url: "api/reservations",
             dataSrc: ''
         },
         "columns": [
             { "data": "id" },
+            { "data": "guest.lastName"},
+            { "data": "room.roomNumber"},
             { "data": "checkInDate" },
             { "data": "checkOutDate" },
             { "data": "numOfGuests" },
-            { "data": "totalPrice" },
-            { "data": "room" }
+            { "data": "totalPrice" }
+
         ]
     });
 }
@@ -225,5 +231,6 @@ function changeReservation() {
 
 $(document).ready(function () {
        $("#checkAvailabilityBtn").click(getRooms);
+       $("#showReservations").click(getReservations);
        $("#completeReservationBtn").click(completeReservation);
 });

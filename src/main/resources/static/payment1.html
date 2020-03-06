@@ -1,0 +1,197 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Payment</title>
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="css/hotel.css" >
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="js/main.js"></script>
+
+
+
+
+</head>
+<body id="payment">
+<nav class="navbar navbar-expand-lg navbar-light bg-light" style="background-color: #e3f2fd;">
+    <a class="navbar-brand" href="#">Hotel Molveno</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+                <a class="nav-link" href="hotelMolvenoMenu.html">Home <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Menu
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="#">Reservation</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="index.html">Payment</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="room.html">Rooms</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="#">Guests</a>
+                    <div class="dropdown-divider"></div>
+                </div>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">About Us</a>
+            </li>
+        </ul>
+        <form class="form-inline my-2 my-lg-0">
+            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+        </form>
+    </div>
+</nav>
+</br></br></br></br></br></br></br>
+
+
+        <div class="input-group">
+            <div class="input-group-prepend">
+                <span class="input-group-text">Card name</span>
+            </div>
+            <input id="nameInput" type="text" placeholder="CardName" >
+        </div>
+
+        <div  class="input-group" >
+            <div  class="input-group-prepend" >
+                <span class="input-group-text"   >Card - No</span>
+            </div>
+            <input style="width:16%" id="NOInput" type="text" placeholder="CardNO" >
+        </div>
+
+        <div class="input-group">
+            <div class="input-group-prepend">
+                <span class="input-group-text">Bill- Adress</span>
+            </div>
+            <input id="BillInput" type="text" placeholder="BillAdress" >
+        </div>
+
+        <div class="input-group" style="25%">
+            <div class="input-group-prepend">
+                <span class="input-group-text">Card expiry</span>
+            </div>
+            <input id="expiryInput" type="text" placeholder="Card-expiry" >
+        </div>
+
+<!--        <div class="input-group">-->
+<!--        <div class="input-group-prepend">-->
+<!--            <span class="input-group-text">pay_type</span>-->
+<!--        </div>-->
+<!--        <input id="typeInput" type="text" placeholder="Pay_Type" >-->
+<!--        </div>-->
+
+        </br></br>
+        <span class="label">Naam bank<span class="required-field" aria-hidden="true">*</span></span>
+        <select name="ibp_bank_ID" class="cko-field" data-cko-blur="fieldValidation" data-validation-message="Selecteer een bank." required="" aria-required="true" aria-invalid="true" data-cko-enter-click="submitForm" data-cko-change="setEditedFieldState">
+            <option value="" selected="selected"></option>
+            <option value="1031">Bunq</option>
+            <option value="106">Knab</option>
+            <option value="22">SNS Bank</option>
+            <option value="3">Rabobank</option>
+            <option value="34">ASN Bank</option>
+            <option value="35">SNS Regio Bank</option>
+            <option value="38">Triodos Bank</option>
+            <option value="4">ABN AMRO</option>
+            <option value="5">ING</option>
+            <option value="87">Van Lanschot Bank</option>
+        </select>
+
+        <br/><br/><br/><br/>
+
+
+        <button id="getPaymentsButton" type="button" class="btn btn-primary">Get payments</button>
+        <button id="postButton" type="button" class="btn btn-primary">Send</button>
+<!--        <button id="saveButton" type="button" class="btn btn-primary">Save</button>-->
+<!--        <button id="newButton" type="button" class="btn btn-primary">New Customer</button>-->
+
+        <br/>  <br/> <br/>
+
+
+        <table class="table table-bordered table-info">
+            <thead class="thead-dark">
+            <tr>
+                <th scope="col">CardName</th>
+                <th scope="col">CardNo</th>
+                <th scope="col">BillAdrdres</th>
+                <th scope="col">CardExpiry</th>
+<!--                <th scope="col">PayType</th>-->
+
+            </tr>
+            </thead>
+            <tbody id="paymentes-list"></tbody>
+        </table>
+
+
+        <div id="paymentDiv"> </div>
+
+
+<!--<form id="formPayments">-->
+<!--    <div class="row">-->
+<!--        <div class="form-group col-md-2">-->
+<!--            <button id="postInputButton" type="button" class="btn btn-primary btn-lg roomButtons">Create Payment</button>-->
+<!--        </div>-->
+
+<!--        <div class="form-group col-md-2">-->
+<!--            <button id="editInputButton" type="button" class="btn btn-primary btn-lg roomButtons">Edit Payment</button>-->
+<!--        </div>-->
+
+<!--    </div>-->
+<!--</form>-->
+
+<!--<table id="tableInputPayment" class="display" style="width:100%">-->
+<!--    <thead>-->
+<!--    <tr>-->
+<!--        <th>id</th>-->
+<!--        <th>cardName</th>-->
+<!--        <th>cardNumber</th>-->
+<!--        <th>billAddress</th>-->
+<!--        <th>cardExpiry</th>-->
+<!--    </tr>-->
+<!--    </thead>-->
+<!--    <tbody>-->
+<!--    <tr>-->
+<!--        <td><input id="cardName" type="text" placeholder="Card Name"/></td>-->
+<!--        <td><input id="cardNumber" type="text" placeholder="Card Number"/></td>-->
+<!--        <td><input id="billAddress" type="text" placeholder="Bill Address"/></td>-->
+<!--        <td><input id="cardExpiry" type="text" placeholder="Card Expiry"/></td>-->
+
+<!--    </tr>-->
+<!--    </tbody>-->
+<!--</table>-->
+
+
+<!--<button id="saveButton" type="button" class="roomButtons btn btn-primary btn-lg">Save Information</button>-->
+<!--<b id="deleteInputTitle">Enter id number of the Payment:</b><input id="idInput" type="Number" placeholder="id"/>-->
+
+
+
+
+
+<!--<table id="tableShowPayment" class="display" >-->
+<!--    <thead>-->
+<!--    <tr>-->
+<!--        <th>id</th>-->
+<!--        <th>cardName</th>-->
+<!--        <th>cardNumber</th>-->
+<!--        <th>billAddress</th>-->
+<!--        <th>cardExpiry</th>-->
+
+<!--    </tr>-->
+<!--    </thead>-->
+<!--</table>-->
+
+
+</body>
+</html>

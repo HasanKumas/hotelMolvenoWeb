@@ -5,35 +5,47 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <!--    Global CSS, JS, JQUERY, BOOTSTRAP, DATA TABLES-->
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css">
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+          integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+            integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+            crossorigin="anonymous"></script>
+    <!-- Local CSS and JS -->
     <link rel="stylesheet" type="text/css" href="\css\hotel.css">
+    <script src="js/room.js"></script>
+
     <title>Hotel Molveno Rooms</title>
 </head>
 <body>
 <nav class="navbar navbar-expand-lg navbar-light bg-light" style="background-color: #e3f2fd;">
     <a class="navbar-brand" href="#">Hotel Molveno</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
             <li class="nav-item">
-                <a class="nav-link" href="HotelMolvenoMenu.html">Home</a>
+                <a class="nav-link" href="hotelMolvenoMenu.html">Home</a>
             </li>
             <li class="nav-item dropdown active">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+                   aria-haspopup="true" aria-expanded="false">
                     Menu<span class="sr-only">(current)</span>
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="#">Reservation</a>
+                    <a class="dropdown-item" href="reservation.html">Reservation</a>
                     <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="#">Payment</a>
+                    <a class="dropdown-item" href="payment.html">Payment</a>
                     <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="#">Rooms</a>
+                    <a class="dropdown-item" href="room.html">Rooms</a>
                     <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="#">Guests</a>
+                    <a class="dropdown-item" href="guest.html">Guests</a>
                     <div class="dropdown-divider"></div>
                 </div>
             </li>
@@ -47,30 +59,78 @@
         </form>
     </div>
 </nav>
-<div id="rooms"><img src="https://media-cdn.tripadvisor.com/media/photo-s/06/4d/7c/01/grand-hotel-molveno.jpg" style="margin-left: 3%; width:480px;height:480px;">
-    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTXf2WG5JGA7hGWUoUj2ccjvbHyX3zEfTxyOSIdaZpZhAApRuAt" style="align-content: right; width:460px;height:480px;">
-    <img src="https://www.visittrentino.info/website/var/tmp/image-thumbnails/1400000/1403379/thumb__demi_gallery_detail_landscape/hotel-molveno-2015-web-1098_2865162.jpeg" style="align-content: right; margin-right:3%; width:460px;height:480px;">
+<div id="rooms">
+    <img src="https://media-cdn.tripadvisor.com/media/photo-s/06/4d/7c/01/grand-hotel-molveno.jpg"
+         style="margin-left: 3%; width:480px;height:480px;">
+    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTXf2WG5JGA7hGWUoUj2ccjvbHyX3zEfTxyOSIdaZpZhAApRuAt"
+         style="align-content: right; width:460px;height:480px;">
+    <img src="https://www.visittrentino.info/website/var/tmp/image-thumbnails/1400000/1403379/thumb__demi_gallery_detail_landscape/hotel-molveno-2015-web-1098_2865162.jpeg"
+         style="align-content: right; margin-right:3%; width:460px;height:480px;">
 </div>
+<br/>
 <form id="formRooms">
     <div class="row">
         <div class="form-group col-md-2">
-            </br><button  type="button" class="btn btn-primary btn-lg roomButtons">Create Room</button>
+            <button id="postInputButton" type="button" class="btn btn-primary btn-lg roomButtons">Create Room</button>
         </div>
         <div class="form-group col-md-2">
-            </br><button  type="button" class="btn btn-primary btn-lg roomButtons">Delete Room</button>
+            <button id="deleteButton" type="button" class="btn btn-primary btn-lg roomButtons">Delete Room</button>
         </div>
         <div class="form-group col-md-2">
-            </br><button  type="button" class="btn btn-primary btn-lg roomButtons">Edit Room</button>
+            <button id="editInputButton" type="button" class="btn btn-primary btn-lg roomButtons">Edit Room</button>
         </div>
-        <div class="form-group col-md-2">
-            </br><button  type="button" class="roomButtons btn btn-primary btn-lg">Show Room</button>
-        </div>
+        <!--        <div class="form-group col-md-2">-->
+        <!--            <button id="getButton" type="button" class="roomButtons btn btn-primary btn-lg">Show Room</button>-->
+        <!--        </div>-->
     </div>
 </form>
-<!-- Optional JavaScript -->
-<!-- jQuery first, then Popper.js, then Bootstrap JS -->
-<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+
+<table id="tableInputRoom" class="display" style="width:100%">
+    <thead>
+    <tr>
+        <th>roomNumber</th>
+        <th>maxBeds</th>
+<!--        <th>availability</th>-->
+        <th>roomPrice</th>
+        <th>roomSizeType</th>
+        <th>roomBudgetType</th>
+        <th>roomSceneType</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td><input id="roomNumber" type="Number" placeholder="Room Number"/></td>
+        <td><input id="maxBeds" type="Number" placeholder="Max Beds"/></td>
+<!--        <td><input id="roomAvailability" type="checkbox" placeholder="Availability"/></td>-->
+        <td><input id="roomPrice" type="Number" placeholder="Room Price"/></td>
+        <td><input id="roomSize" type="text" placeholder="Size Type"/></td>
+        <td><input id="roomBudget" type="text" placeholder="Budget Type"/></td>
+        <td><input id="roomScene" type="text" placeholder="Scene Type"/></td>
+    </tr>
+    </tbody>
+</table>
+
+
+<button id="saveButton" type="button" class="roomButtons btn btn-primary btn-lg">Save</button>
+<b id="deleteInputTitle">Enter id number of the room:</b><input id="idInput" type="Number"
+                                                                placeholder="id"/>
+<button id="deleteBtn" type="button" class="roomButtons btn btn-primary btn-lg">Delete</button>
+<button id="editButton" type="button" class="roomButtons btn btn-primary btn-lg">Save</button>
+
+<table id="tableShowRoom" class="display" style="width:100%">
+    <thead>
+    <tr>
+        <th>id</th>
+        <th>roomNumber</th>
+        <th>maxBeds</th>
+<!--        <th>availability</th>-->
+        <th>roomPrice</th>
+        <th>roomSizeType</th>
+        <th>roomBudgetType</th>
+        <th>roomSceneType</th>
+    </tr>
+    </thead>
+</table>
+
 </body>
 </html>

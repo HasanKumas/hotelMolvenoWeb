@@ -1,8 +1,5 @@
 package com.hotelMolveno.hotelMolveno.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import org.springframework.lang.Nullable;
-
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -11,7 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-public class Room {
+public class AvailableRoom {
     @Id
     @GeneratedValue
     private Long id;
@@ -22,10 +19,6 @@ public class Room {
     private  Integer roomNumber;
     private Integer roomPrice;
     private Boolean isAvailable;
-
-    @OneToMany (mappedBy = "room")
-    @JsonIgnore
-    private List<Reservation> reservations = new ArrayList<>();
 
     public Long getId() {
         return id;
@@ -91,19 +84,4 @@ public class Room {
         this.isAvailable = isAvailable;
     }
 
-    public Boolean getAvailable() {
-        return isAvailable;
-    }
-
-    public void setAvailable(Boolean available) {
-        isAvailable = available;
-    }
-
-    public List<Reservation> getReservations() {
-        return reservations;
-    }
-
-    public void setReservations(List<Reservation> reservations) {
-        this.reservations = reservations;
-    }
 }

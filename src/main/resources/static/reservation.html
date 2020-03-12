@@ -9,6 +9,7 @@
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css">
+
     <!--    <script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap.min.js"></script>-->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
           integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
@@ -23,6 +24,35 @@
     <title>Hotel Reservation</title>
 </head>
 <body id="reservation">
+
+<div class="modal fade" id="reservationAskMember" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+     aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel"></h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <!--                  model body addd sth-->
+            <div class="modal-body">
+                Are you a member already?
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-info" id="confirmMembership">Yes, I am!</button>
+                <button type="button" class="btn btn-secondary" id="confirmNotMember">No</button>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
 <nav class="navbar navbar-expand-lg navbar-light bg-light" style="background-color: #e3f2fd;">
     <a class="navbar-brand" href="#">Hotel Molveno</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
@@ -62,6 +92,7 @@
     </div>
 </nav>
 <br/>
+<span>
 <div class="container" id="formCheck">
     <div class="row">
         <div class="form-group col-md-4">
@@ -86,11 +117,11 @@
     </div>
 </div>
 <br>
-
+</span>
 
 <div class="container-fluid" id="tableContainer">
     <h1 style="color:white">AVAILABLE ROOMS</h1>
-    <table id="tableReservation" class="display" style="width:100%; color:white">
+    <table id="tableReservation" class="display" style="width:100%">
         <thead>
         <tr>
             <th>roomId</th>
@@ -100,12 +131,10 @@
             <th>Number Of Beds</th>
             <th>Total Price</th>
             <th></th>
-            <!--        <th><input id="flexPrice" type="Number" placeholder="Flex Price"/>Flexible Price</th>-->
-            <!--        <th>checkInDate</th>-->
-            <!--        <th>checkOutDate</th>-->
-            <!--        <th>-->
-            <!--            <button type="button">reserve</button>-->
-            <!--        </th>-->
+<!--            <th><input id="flexPrice" type="Number" placeholder="Flex Price"/>Flexible Price</th>-->
+<!--            <th>checkInDate</th>-->
+<!--            <th>checkOutDate</th>-->
+
         </tr>
         </thead>
     </table>
@@ -182,16 +211,7 @@
             <input type="text" class="form-control" id="inputPhone">
         </div>
     </div>
-    <div class="form-row">
-        <div class="form-group col-md-6">
-            <label for="inputIDType">ID Type</label>
-            <input type="text" class="form-control" id="inputIDType">
-        </div>
-        <div class="form-group col-md-6">
-            <label for="inputIDNumber">ID Number</label>
-            <input type="text" class="form-control" id="inputIDNumber">
-        </div>
-    </div>
+
     <div class="form-group">
         <label for="inputAddress">Address</label>
         <input type="text" class="form-control" id="inputAddress" placeholder="Via Bettega 12">
@@ -208,6 +228,18 @@
     </div>
     <button type="button" class="btn btn-primary" id="completeReservationBtn">Complete Reservation</button>
 </form>
+
+    <form id="checkNameLastName">
+        <div class="form-group col-md-4">
+            <label for="checkName">Name</label>
+            <input type="text" class="form-control" id="checkName">
+        </div>
+        <div class="form-group col-md-4">
+            <label for="checkLastName">Last Name</label>
+            <input type="text" class="form-control" id="checkLastName">
+        </div>
+
+    </form>
 </div>
 </body>
 </html>

@@ -4,7 +4,7 @@
   background-repeat:no-repeat;
 }
  #reservation{
-  background-image: url(https://pix10.agoda.net/hotelImages/243/243421/243421_17062821340054129479.jpg?s=1024x768);
+  background-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQxTz1fQT_FRKlAfF0g939EqzHrw_HgkZKyhenkTm2aHVm6V9d0);
   background-size: cover;
   background-repeat:no-repeat;
   }
@@ -104,4 +104,7 @@
       background-image: url(https://www.federalreserve.gov/images/filmstrip-payment-systems.jpg);
       background-size: cover;
       background-repeat:no-repeat;
+    }
+    #checkNameLastName{
+     display:none;
     }

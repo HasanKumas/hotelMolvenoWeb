@@ -77,6 +77,7 @@ function getRooms() {
 
     $('#tableReservation tbody').off().on( 'click', 'button', function () {
             console.log(table1.row($(this).parents('tr')));
+            $('#areYouMember').modal("show");
             var data1 = table1.row( $(this).parents('tr') ).data();
             $('#tableContainer').hide();
             $('#reservationContainer').show();

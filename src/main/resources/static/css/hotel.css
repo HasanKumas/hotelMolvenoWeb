@@ -27,6 +27,11 @@
 
     display: none;
 }
+#Container{
+    background:rgb(153, 153, 153);
+
+    display: none;
+}
 
 #formRooms{
         margin-left : 5%;

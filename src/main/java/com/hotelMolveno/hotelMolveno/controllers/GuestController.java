@@ -20,6 +20,11 @@ public class GuestController {
         return guestRepository.findAll();
     }
 
+    @GetMapping("/{id}")
+    public Guest getGuest(@PathVariable Long id) {
+        return guestRepository.findById(id).get();
+    }
+
     @PostMapping
     public Long addGuest(@RequestBody Guest guest) {
         return guestRepository.save(guest).getId();

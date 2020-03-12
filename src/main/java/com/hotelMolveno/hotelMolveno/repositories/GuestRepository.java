@@ -5,5 +5,5 @@ import com.hotelMolveno.hotelMolveno.model.Room;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface GuestRepository extends JpaRepository<Guest, Long> {
-    Guest findOneByFirstNameAndLastName(String firstName, String lastName);
+    Guest findOneByFirstNameAndLastNameIgnoreCase(String firstName, String lastName);
 }

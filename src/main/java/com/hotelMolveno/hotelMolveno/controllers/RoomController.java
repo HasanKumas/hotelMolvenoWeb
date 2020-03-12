@@ -17,10 +17,14 @@ public class RoomController {
     public List<Room> getRooms (){
         return roomRepository.findAll();
     }
-
     @PostMapping
-    public void addRoom(@RequestBody Room room) {
+    public String addRoom(@RequestBody Room room) {
+        Room existingRoom = roomRepository.findOneByRoomNumber(room.getRoomNumber());
+        if(existingRoom != null) {
+            return "The room number "+ room.getRoomNumber() + " is already exists. Please set another number.";
+        }
         roomRepository.save(room);
+        return "The room has created..";
     }
 
     @DeleteMapping("/{id}")

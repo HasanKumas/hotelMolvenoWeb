@@ -5,8 +5,10 @@ import com.hotelMolveno.hotelMolveno.model.Reservation;
 import com.hotelMolveno.hotelMolveno.repositories.ReservationRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @RestController
@@ -22,7 +24,6 @@ public class ReservationController {
 
     @PostMapping("/reservations")
     public void addReservation(@RequestBody Reservation reservation) {
-
         reservationRepository.save(reservation);
     }
 

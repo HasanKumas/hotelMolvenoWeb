@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -14,6 +14,7 @@
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="js/payment.js"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
 
 
@@ -41,7 +42,7 @@
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                         <a class="dropdown-item" href="reservation.html">Reservation</a>
                         <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="payment.html">Payment</a>
+                        <a class="dropdown-item" href="index.html">Payment</a>
                         <div class="dropdown-divider"></div>
                         <a class="dropdown-item" href="room.html">Rooms</a>
                         <div class="dropdown-divider"></div>
@@ -1052,29 +1053,53 @@
             <div class="oneLinePhoneNumber">
                 <label class="text phone-number contact-primary contact-phone compact-phone-number invalid">
                     <span class="visuallyhidden">phone number</span>
-                    <input type="tel" class="text cko-field phone-number gb-whitelist " data-tealeaf-name="phoneNumber"
-                        data-tealeaf-error-id="2003" data-cko-rfrr-id="HOT.CKO.PHONENUMBER"
+                    <input id="telf" type="text" class="text cko-field phone-number gb-whitelist "
+                        data-tealeaf-name="phoneNumber" data-tealeaf-error-id="2003"
+                        data-cko-rfrr-id="HOT.CKO.PHONENUMBER"
                         data-cko-blur="autofillPhoneNumber,fieldValidation,syncPrimaryPhoneNumberToSecondary,trackOmniture"
                         name="tripPreferencesRequest.hotelTripPreferences.hotelRoomPreferences[0].preferredPhoneNumber"
-                        placeholder="Zodat de accommodatie je kan bereiken" value=""
-                        data-validation-message="Voer een geldig telefoonnummer in." maxlength="15" required=""
-                        aria-required="true" pattern="(\D*\d){4,}" aria-invalid="true" data-cko-enter-click="submitForm"
-                        data-cko-change="setEditedFieldState">
+                        placeholder="phoneNumber" value="" data-validation-message="Voer een geldig telefoonnummer in."
+                        maxlength="15" required="" aria-required="true" pattern="(\D*\d){4,}" aria-invalid="true"
+                        data-cko-enter-click="submitForm" data-cko-change="setEditedFieldState">
                     <p class="uitk-validation-error">Enter a valid phone number</p>
                 </label>
             </div>
         </fieldset>
-    </div>
+    </div> -->
 
-    </br></br></br></br></br>
+    <!-- </br></br>
+<span class="label">Naam bank<span class="required-field" aria-hidden="true">*</span></span>
+<select name="ibp_bank_ID" class="cko-field" data-cko-blur="fieldValidation"
+    data-validation-message="Selecteer een bank." required="" aria-required="true" aria-invalid="true"
+    data-cko-enter-click="submitForm" data-cko-change="setEditedFieldState">
+    <option value="" selected="selected"></option>
+    <option value="1031">Bunq</option>
+    <option value="106">Knab</option>
+    <option value="22">SNS Bank</option>
+    <option value="3">Rabobank</option>
+    <option value="34">ASN Bank</option>
+    <option value="35">SNS Regio Bank</option>
+    <option value="38">Triodos Bank</option>
+    <option value="4">ABN AMRO</option>
+    <option value="5">ING</option>
+    <option value="87">Van Lanschot Bank</option>
+</select> -->
 
+    <br /><br /><br /><br />
+
+
+    <!-- <button id="getPaymentsButton" type="button" class="btn btn-primary">Get payments</button> -->
+    <button id="postButton" type="button" class="btn btn-primary">Send</button>
+    <!--        <button id="saveButton" type="button" class="btn btn-primary">Save</button>-->
+    <!--        <button id="newButton" type="button" class="btn btn-primary">New Customer</button>-->
+
+    <br /> <br /> <br />
 
     <button id="getPaymentsButton" type="button" class="btn btn-primary">Get payments</button>
     <button id="saveButton" type="button" class="btn btn-primary">Save</button>
     <button id="newButton" type="button" class="btn btn-primary">New Customer</button>
     <button id="postButton" type="button" class="btn btn-primary">Send</button>
     <br /> <br /> <br />
-
 
     <table class="table table-bordered table-info">
         <thead class="thead-dark">
@@ -1083,8 +1108,8 @@
                 <th scope="col">CardNo</th>
                 <th scope="col">BillAdrdres</th>
                 <th scope="col">CardExpiry</th>
-                <th scope="col">PayTupe</th>
-
+                <th scope="col">Total Price</th>
+                <th scope="col">Action</th>
             </tr>
         </thead>
         <tbody id="paymentes-list"></tbody>
@@ -1092,6 +1117,9 @@
 
 
     <div id="paymentDiv"> </div>
+
+
+
 
 </body>
 

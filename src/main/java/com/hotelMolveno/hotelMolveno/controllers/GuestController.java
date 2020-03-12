@@ -10,6 +10,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/guests")//end point
+
 public class GuestController {
     @Autowired//connect to database
     private GuestRepository guestRepository;
@@ -17,6 +18,11 @@ public class GuestController {
     @GetMapping
     public List<Guest> getGuests() {
         return guestRepository.findAll();
+    }
+
+    @GetMapping("/{id}")
+    public Guest getGuest(@PathVariable Long id) {
+        return guestRepository.findById(id).get();
     }
 
     @PostMapping

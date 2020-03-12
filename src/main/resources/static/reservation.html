@@ -8,14 +8,24 @@
     <!--    Global CSS, JS, JQUERY, BOOTSTRAP, DATA TABLES-->
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/select/1.3.1/js/dataTables.select.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.datatables.net/select/1.3.1/css/select.dataTables.min.css">
+
     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css">
-    <!--    <script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap.min.js"></script>-->
+
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
           integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
             integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
             crossorigin="anonymous"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>
+
+    <!--    buttons-->
+    <link rel="stylesheet" href="https://cdn.datatables.net/buttons/1.6.1/css/buttons.dataTables.min.css">
+    <script src="https://cdn.datatables.net/buttons/1.6.1/js/dataTables.buttons.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/1.6.1/js/buttons.html5.min.js"></script>
     <!-- Local CSS and JS -->
     <link rel="stylesheet" type="text/css" href="\css\hotel.css">
     <script src="js/reservation.js"></script>
@@ -66,11 +76,11 @@
     <div class="row">
         <div class="form-group col-md-4">
             <label for="checkInDate">Check In Date</label>
-            <input type="date" class="form-control" id="checkInDate" placeholder="">
+            <input class="form-control datepicker" data-date-start-date="0d" id="checkInDate" placeholder="">
         </div>
         <div class="form-group col-md-4">
             <label for="checkOutDate">Check Out Date</label>
-            <input type="date" class="form-control" id="checkOutDate" placeholder="">
+            <input class="form-control datepicker" data-date-start-date="+1d" id="checkOutDate" placeholder="">
         </div>
         <div class="form-group col-md-2">
             <label for="numOfGuests">Guests</label>
@@ -90,22 +100,16 @@
 
 <div class="container-fluid" id="tableContainer">
     <h1 style="color:white">AVAILABLE ROOMS</h1>
-    <table id="tableReservation" class="display" style="width:100%, color:white">
+    <table id="tableReservation" class="display" style="width:100%">
         <thead>
         <tr>
-            <th>roomId</th>
-            <th>roomSizeType</th>
-            <th>roomBudgetType</th>
-            <th>roomSceneType</th>
+            <th>Room Number</th>
+            <th>Room Size Type</th>
+            <th>Room Budget Type</th>
+            <th>Room Scene Type</th>
             <th>Number Of Beds</th>
             <th>Total Price</th>
             <th></th>
-            <!--        <th><input id="flexPrice" type="Number" placeholder="Flex Price"/>Flexible Price</th>-->
-            <!--        <th>checkInDate</th>-->
-            <!--        <th>checkOutDate</th>-->
-            <!--        <th>-->
-            <!--            <button type="button">reserve</button>-->
-            <!--        </th>-->
         </tr>
         </thead>
     </table>
@@ -113,7 +117,7 @@
 
 <div class="container-fluid" id="reservationListContainer">
     <h1 style="color:white">RESERVATION LIST</h1>
-    <table id="tableReservationList" class="display" style="width:100%, color:white">
+    <table id="tableReservationList" class="display" style="width:100%">
         <thead>
         <tr>
             <th>Reservation Number</th>
@@ -123,27 +127,21 @@
             <th>Check Out Date</th>
             <th>Number Of Guests</th>
             <th>Total Price</th>
-            <th></th>
-            <!--        <th><input id="flexPrice" type="Number" placeholder="Flex Price"/>Flexible Price</th>-->
-            <!--        <th>checkInDate</th>-->
-            <!--        <th>checkOutDate</th>-->
-            <!--        <th>-->
-            <!--            <button type="button">reserve</button>-->
-            <!--        </th>-->
         </tr>
         </thead>
     </table>
 </div>
+
 <div class="container" id="reservationContainer">
 <form>
     <div class="form-row">
         <div class="form-group col-md-4">
             <label for="inputCheckIn">Check In Date</label>
-            <input type="date" class="form-control" id="inputCheckIn" disabled>
+            <input class="form-control datepicker"  id="inputCheckIn" disabled>
         </div>
         <div class="form-group col-md-4">
             <label for="inputCheckOut">Check Out Date</label>
-            <input type="date" class="form-control" id="inputCheckOut" disabled>
+            <input class="form-control datepicker"  id="inputCheckOut" disabled>
         </div>
         <div class="form-group col-md-4">
             <label for="inputNumOfGuest">Number Of Guests</label>
@@ -159,7 +157,7 @@
         </div>
         <div class="form-group col-md-4">
             <label for="inputRoomNumber">Room Number</label>
-            <input type="number" class="form-control" id="inputRoomNumber" disabled>
+            <input type="text" class="form-control" id="inputRoomNumber" disabled>
         </div>
     </div>
     <div class="form-row">

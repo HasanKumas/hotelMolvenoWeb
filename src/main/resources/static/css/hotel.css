@@ -98,3 +98,18 @@
 .input-group-text{
     width: 120px;
 }
+#confirmMembership {
+  display: none;
+}
+
+#confirmNotMember {
+  display: none;
+}
+
+#searchMembership {
+  display: none;
+}
+
+#cancelSearchMembership {
+  display: none;
+}

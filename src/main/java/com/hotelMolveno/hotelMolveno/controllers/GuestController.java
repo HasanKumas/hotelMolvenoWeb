@@ -20,6 +20,11 @@ public class GuestController {
         return guestRepository.findAll();
     }
 
+    @GetMapping("/search")
+    public Guest getGuest(@RequestParam("firstName") String firstName, @RequestParam("lastName") String lastName) {
+        return guestRepository.findOneByFirstNameAndLastName(firstName, lastName);
+    }
+
     @GetMapping("/{id}")
     public Guest getGuest(@PathVariable Long id) {
         return guestRepository.findById(id).get();

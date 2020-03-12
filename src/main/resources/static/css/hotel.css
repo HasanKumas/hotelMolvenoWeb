@@ -105,3 +105,19 @@
       background-size: cover;
       background-repeat:no-repeat;
     }
+  
+   
+ 
+#input-group{
+    padding: 50px;
+    margin: 10px auto;
+    box-sizing: border-box;
+    display:flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: baseline;
+    flex-direction: row;
+}
+.input-group-text{
+    width: 120px;
+}

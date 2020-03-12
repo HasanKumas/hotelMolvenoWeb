@@ -72,6 +72,9 @@
 #editButton {
   display: none;
 }
+#checkNameLastName{
+  display: none;
+}
 #tableContainer {
   display: none;
   background: #add8e6;

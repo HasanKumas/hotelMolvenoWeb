@@ -33,6 +33,40 @@
     <title>Hotel Reservation</title>
 </head>
 <body id="reservation">
+<div class="modal fade" id="reservationAskMember" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+     aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel"></h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <!--                  model body addd sth-->
+            <div class="modal-body">
+                Are you a member already?
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-info" id="confirmMembership">Yes, I am!</button>
+                <button type="button" class="btn btn-secondary" id="confirmNotMember">No</button>
+
+            </div>
+        </div>
+    </div>
+</div>
+<form id="checkNameLastName">
+    <div class="form-group col-md-4">
+        <label for="checkName">Name</label>
+        <input type="text" class="form-control" id="checkName">
+    </div>
+    <div class="form-group col-md-4">
+        <label for="checkLastName">Last Name</label>
+        <input type="text" class="form-control" id="checkLastName">
+    </div>
+
+</form>
 <nav class="navbar navbar-expand-lg navbar-light bg-light" style="background-color: #e3f2fd;">
     <a class="navbar-brand" href="#">Hotel Molveno</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
@@ -206,6 +240,7 @@
     </div>
     <button type="button" class="btn btn-primary" id="completeReservationBtn">Complete Reservation</button>
 </form>
+
 </div>
 </body>
 </html>

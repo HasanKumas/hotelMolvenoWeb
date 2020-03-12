@@ -1,12 +1,12 @@
 package com.hotelMolveno.hotelMolveno.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.sun.istack.Nullable;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotNull;
 import java.time.LocalDate;
-import java.util.ArrayList;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 import static java.time.temporal.ChronoUnit.DAYS;
@@ -17,9 +17,9 @@ public class Reservation {
     @Id
     @GeneratedValue
     private Long id;
-    @DateTimeFormat(pattern = "yyyy-MM-dd")
-    private LocalDate checkInDate = LocalDate.now();
-    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    @JsonFormat(pattern = "dd-MM-yyyy")
+    private LocalDate checkInDate;
+    @JsonFormat(pattern = "dd-MM-yyyy")
     private LocalDate checkOutDate;
     private Integer numOfGuests;
     private Integer totalPrice;
@@ -29,12 +29,7 @@ public class Reservation {
     @ManyToOne
     private Guest guest;
 
-    // private List<Payment> payments;
-
-    public Integer totalPrice() {
-        long days = DAYS.between(checkInDate, checkOutDate);
-        return (int) days * room.getRoomPrice();
-    }
+//    private Payment payment;
 
     public Long getId() {
         return id;

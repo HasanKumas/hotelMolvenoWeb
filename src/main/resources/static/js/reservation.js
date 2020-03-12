@@ -1,63 +1,42 @@
-var reservationList
-var confirmationStatusMember
- var table1
+var reservationList;
 function getDate() {
-    var today = new Date();
-    var dd = today.getDate();
-    var ddt = today.getDate() + 1;
-    var mm = today.getMonth() + 1; //January is 0!
-    var yyyy = today.getFullYear();
-
-
-
-    if (dd < 10) {
-        dd = '0' + dd
-    }
-
-    if (mm < 10) {
-        mm = '0' + mm
-    }
-    if (ddt < 10) {
-        ddt = '0' + dd
-    }
-
-    today = dd + '-' + mm + '-' + yyyy;
-    var tomorrow = ddt + '-' + mm + '-' + yyyy;
-    console.log(today);
-    document.getElementById("checkInDate").value;
-    document.getElementById("checkInDate").min;
-    document.getElementById("checkOutDate").value;
-    document.getElementById("checkOutDate").min;
+    $("#checkInDate").datepicker("setDate", "0d");
+    $(".checkInDate").datepicker("minDate", "0d");
+    $("#checkOutDate").datepicker("setDate", "+1d");
+    $(".checkOutDate").datepicker("minDate", "+1d");
     document.getElementById("numOfGuests").value = 2;
 }
-function convertDate(dateString) {
-    var date = new Date(dateString);
-    return date.getDate() + "/" + date.getMonth() + "/" + date.getFullYear();
-}
-
 
 function GetDays() {
-    var checkOutDate = new Date(document.getElementById("checkOutDate").value);
-    var checkInDate = new Date(document.getElementById("checkInDate").value);
-    return parseInt((checkOutDate - checkInDate) / (24 * 3600 * 1000));
+    var startDate = $("#checkInDate").datepicker("getDate");
+    var endDate = $("#checkOutDate").datepicker("getDate");
+    console.log(endDate);
+    var diffInDays = Math.round(
+        (endDate.getTime() - startDate.getTime()) / (1000 * 60 * 60 * 24)
+    );
+    return diffInDays;
 }
 function GetTotalPrice(roomPrice) {
     return Number(roomPrice * GetDays());
 }
 
-window.onload = function () {
-    getDate();
-}
-
 function getRooms() {
-    $("#tableReservation").dataTable().fnDestroy();
-    $('#tableContainer').show();
+    $("#tableReservation")
+        .dataTable()
+        .fnDestroy();
+    $("#tableContainer").show();
+    $("#reservationListContainer").hide();
 
-
-     table1 = $('#tableReservation').DataTable({
+    var table1 = $("#tableReservation").DataTable({
         ajax: {
             type: "POST",
-            url: "api/availableRooms?numOfGuests=" + document.getElementById("numOfGuests").value,
+            url:
+                "api/availableRooms?numOfGuests=" +
+                document.getElementById("numOfGuests").value +
+                "&checkInDate=" +
+                document.getElementById("checkInDate").value +
+                "&checkOutDate=" +
+                document.getElementById("checkOutDate").value,
             dataSrc: function (json) {
                 var return_data = new Array();
                 for (var i = 0; i < json.length; i++) {
@@ -76,13 +55,11 @@ function getRooms() {
 
 
                 }
-
-
                 return return_data;
             }
         },
         columns: [
-            { data: "id" },
+            { data: "roomNumber" },
             { data: "roomSizeType" },
             { data: "roomBudgetType" },
             { data: "roomSceneType" },
@@ -104,35 +81,41 @@ function getRooms() {
 //        document.getElementById("inputTotalFlex").value = data1.totalPrice;
 //        document.getElementById("inputRoomID").value = data1.id;
 //        document.getElementById("inputRoomNumber").value = data1.roomNumber;
-
     });
 
-}
-
-
- function reservationForm() {
-
-            console.log(table1.row($(this).parents('tr')));
-            var data1 = table1.row($(this).parents('tr')).data();
-            $('#tableContainer').hide();
-            $('#reservationContainer').show();
-            document.getElementById("inputCheckIn").value = document.getElementById("checkInDate").value;
-            document.getElementById("inputCheckOut").value = document.getElementById("checkOutDate").value;
-            document.getElementById("inputNumOfGuest").value = document.getElementById("numOfGuests").value;;
+    $("#tableReservation tbody")
+        .off()
+        .on("click", "button", function () {
+            console.log(table1.row($(this).parents("tr")));
+            var data1 = table1.row($(this).parents("tr")).data();
+            $("#tableContainer").hide();
+            $("#reservationContainer").show();
+            document.getElementById("inputCheckIn").value = document.getElementById(
+                "checkInDate"
+            ).value;
+            document.getElementById("inputCheckOut").value = document.getElementById(
+                "checkOutDate"
+            ).value;
+            document.getElementById(
+                "inputNumOfGuest"
+            ).value = document.getElementById("numOfGuests").value;
             document.getElementById("inputTotalFlex").value = data1.totalPrice;
             document.getElementById("inputRoomID").value = data1.id;
             document.getElementById("inputRoomNumber").value = data1.roomNumber;
-
-        };
+        });
+}
 
 function getReservations() {
-    $("#tableReservationList").dataTable().fnDestroy();
-    $('#reservationListContainer').show();
-    $('#tableReservationList').show();
-    reservationList = $('#tableReservationList').DataTable({
+    $("#tableReservationList")
+        .dataTable()
+        .fnDestroy();
+    $("#reservationListContainer").show();
+    //    $('#tableReservationList').show();
+    $("#tableContainer").hide();
+    reservationList = $("#tableReservationList").DataTable({
         ajax: {
             url: "api/reservations",
-            dataSrc: ''
+            dataSrc: ""
         },
         "columns": [
             { "data": "id" },
@@ -142,7 +125,6 @@ function getReservations() {
             { "data": "checkOutDate" },
             { "data": "numOfGuests" },
             { "data": "totalPrice" }
-
         ]
     });
 }
@@ -154,9 +136,7 @@ function completeReservation() {
         email: $("#inputEmail").val(),
         tel: $("#inputPhone").val(),
         idType: $("#inputIDType").val(),
-        idValue: $("#inputIDNumber").val(),
         address: $("#inputAddress").val()
-
     };
 
     var jsonObject = JSON.stringify(guest);
@@ -183,22 +163,44 @@ function completeReservation() {
             var jsonObject = JSON.stringify(reservation);
 
             $.ajax({
-                url: "api/reservations",
+                url:
+                    "api/reservations?checkInDate=" +
+                    document.getElementById("checkInDate").value +
+                    "&checkOutDate=" +
+                    document.getElementById("checkOutDate").value,
                 type: "POST",
                 contentType: "application/json",
                 data: jsonObject,
                 success: function () {
-                    //                              alert('We succeeded for reservation!');
+                    alert(
+                        "The room number " +
+                        document.getElementById("inputRoomNumber").value +
+                        " reserved for " +
+                        $("#inputLastName").val() +
+                        " " +
+                        $("#inputName").val() +
+                        ". The total price is: " +
+                        $("#inputTotalFlex").val()
+                    );
+                    $("#inputCheckIn").val(""),
+                        $("#inputCheckOut").val(""),
+                        $("#inputNumOfGuest").val(""),
+                        $("#inputTotalFlex").val(""),
+                        $("#inputLastName").val(""),
+                        $("#inputName").val(""),
+                        $("#inputEmail").val(""),
+                        $("#inputPhone").val(""),
+                        $("#inputIDType").val(""),
+                        $("#inputAddress").val("");
+                    $("#reservationContainer").hide();
                 },
                 error: function () {
                     //                              alert('try again for reservation');
                 }
             });
-            alert('The room number ' + document.getElementById("inputRoomNumber").value + " reserved for " + $("#inputLastName").val() + " " + $("#inputName").val() + ". The total price is: " + $("#inputTotalFlex").val());
-            $("#reservationContainer").hide();
         },
         error: function () {
-            alert('try again');
+            alert("try again");
         }
     });
 }
@@ -233,7 +235,6 @@ function changeRoomInput() {
     $("#deleteBtn").hide();
     $("#saveButton").hide();
     $('#tableShowRoom').hide();
-
 }
 
 function changeReservation() {
@@ -291,5 +292,11 @@ $('#reservationAskMember').hide();
 
 });
 
-    });
 
+    $(".datepicker").datepicker({
+        autoclose: true,
+        todayHighlight: true,
+        format: "dd-mm-yyyy"
+    });
+    getDate();
+});

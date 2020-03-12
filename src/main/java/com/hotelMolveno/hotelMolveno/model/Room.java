@@ -3,10 +3,7 @@ package com.hotelMolveno.hotelMolveno.model;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.springframework.lang.Nullable;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -19,11 +16,11 @@ public class Room {
     private String roomBudgetType;
     private String roomSceneType;
     private  Integer maxBeds;
-    private  Integer roomNumber;
+    private  String roomNumber;
     private Integer roomPrice;
     private Boolean isAvailable;
 
-    @OneToMany (mappedBy = "room")
+    @OneToMany(mappedBy = "room")
     @JsonIgnore
     private List<Reservation> reservations = new ArrayList<>();
 
@@ -67,11 +64,11 @@ public class Room {
         this.maxBeds = maxBeds;
     }
 
-    public Integer getRoomNumber() {
+    public String getRoomNumber() {
         return roomNumber;
     }
 
-    public void setRoomNumber(Integer roomNumber) {
+    public void setRoomNumber(String roomNumber) {
         this.roomNumber = roomNumber;
     }
 

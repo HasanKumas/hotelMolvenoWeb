@@ -2,9 +2,9 @@ var reservationList;
 var data1;
 function getDate() {
     $("#checkInDate").datepicker("setDate", "0d");
-    $(".checkInDate").datepicker("minDate", "0d");
+    $("#checkInDate").datepicker("minDate", "0d");
     $("#checkOutDate").datepicker("setDate", "+1d");
-    $(".checkOutDate").datepicker("minDate", "+1d");
+    $("#checkOutDate").datepicker("minDate", "+1d");
     document.getElementById("numOfGuests").value = 2;
 }
 
@@ -27,6 +27,7 @@ function getRooms() {
         .fnDestroy();
     $("#tableContainer").show();
     $("#reservationListContainer").hide();
+    $("#reservationContainer").hide();
 
     var table1 = $("#tableReservation").DataTable({
         ajax: {
@@ -69,6 +70,8 @@ function getRooms() {
     $("#tableReservation tbody")
         .off()
         .on("click", "button", function () {
+
+            $('#reservationAskMember .modal-body').text("Are you a member already?");
             $('#reservationAskMember').modal('show');
             $('#confirmMembership').show();
             $('#confirmNotMember').show();
@@ -281,6 +284,7 @@ function cancelReservationForm(){
 }
 
 function searchGuestAndFillForm(){
+
     $('#reservationAskMember').modal('hide');
     console.log("hey out");
     $.ajax ({

@@ -1,7 +1,6 @@
 package com.hotelMolveno.hotelMolveno.controllers;
 
 import com.hotelMolveno.hotelMolveno.model.Guest;
-import com.hotelMolveno.hotelMolveno.model.Reservation;
 import com.hotelMolveno.hotelMolveno.repositories.GuestRepository;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,6 +10,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/guests")//end point
+
 public class GuestController {
     @Autowired//connect to database
     private GuestRepository guestRepository;
@@ -20,6 +20,15 @@ public class GuestController {
         return guestRepository.findAll();
     }
 
+    @GetMapping("/search")
+    public Guest getGuest(@RequestParam("firstName") String firstName, @RequestParam("lastName") String lastName) {
+        return guestRepository.findOneByFirstNameAndLastName(firstName, lastName);
+    }
+
+    @GetMapping("/{id}")
+    public Guest getGuest(@PathVariable Long id) {
+        return guestRepository.findById(id).get();
+    }
 
     @PostMapping
     public Long addGuest(@RequestBody Guest guest) {

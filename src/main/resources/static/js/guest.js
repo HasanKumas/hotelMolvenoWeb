@@ -38,23 +38,23 @@ function displayGuests(guests) {
         $('#areYouSure').modal({ backdrop: 'static', keyboard: false });
     });
     $('#guestContainer .edit-button').click(function () {
-        var guestData=
+        var guestData =
 
 
-        guestIdEdit = $(this).attr('guestId');
+            guestIdEdit = $(this).attr('guestId');
 
 
-         $.get('api/guests/' + guestIdEdit, function (guest) {
+        $.get('api/guests/' + guestIdEdit, function (guest) {
 
-             $('#guestEditPop').modal({ backdrop: 'static', keyboard: false });
-             $('#guestFirstNameInput').val(guest.firstName);
-             $('#guestLastNameInput').val(guest.lastName);
-             $('#guestTelInput').val(guest.tel);
-             $('#guestEmailInput').val(guest.email);
-             $('#guestAddressInput').val(guest.address);
-             $('#guestIdTypeInput').val(guest.idType);
-             $('#guestIdValueInput').val(guest.idValue);
-         });
+            $('#guestEditPop').modal({ backdrop: 'static', keyboard: false });
+            $('#guestFirstNameInput').val(guest.firstName);
+            $('#guestLastNameInput').val(guest.lastName);
+            $('#guestTelInput').val(guest.tel);
+            $('#guestEmailInput').val(guest.email);
+            $('#guestAddressInput').val(guest.address);
+            $('#guestIdTypeInput').val(guest.idType);
+            $('#guestIdValueInput').val(guest.idValue);
+        });
     });
 
 }

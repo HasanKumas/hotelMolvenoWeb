@@ -1,5 +1,6 @@
 <!doctype html>
 <html lang="en">
+
 <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
@@ -9,14 +10,16 @@
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <!--    data tables-->
     <script src="//cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
-    <link rel="stylesheet" href="//cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css" >
+    <link rel="stylesheet" href="//cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css">
     <!--    bootsrap-->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
-          integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
-            integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
-            crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
 
     <!--    buttons-->
     <link rel="stylesheet" href="https://cdn.datatables.net/buttons/1.6.1/css/buttons.dataTables.min.css">
@@ -29,142 +32,145 @@
 
     <title>Hotel Molveno Rooms</title>
 </head>
-<body>
-  <!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel"></h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
 
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                <button type="button" class="btn btn-primary" id="okDelModalBtn">OK</button>
-                <button type="button" class="btn btn-primary" id="saveEdtModalBtn">Save</button>
-                <button type="button" class="btn btn-primary" id="saveCrtModalBtn">Save</button>
+<body>
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel"></h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                    <button type="button" class="btn btn-primary" id="okDelModalBtn">OK</button>
+                    <button type="button" class="btn btn-primary" id="saveEdtModalBtn">Save</button>
+                    <button type="button" class="btn btn-primary" id="saveCrtModalBtn">Save</button>
+                </div>
             </div>
         </div>
     </div>
-</div>
-<nav class="navbar navbar-expand-lg navbar-light bg-light" style="background-color: #e3f2fd;">
-    <a class="navbar-brand" href="#">Hotel Molveno</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+    <nav class="navbar navbar-expand-lg navbar-light bg-light" style="background-color: #e3f2fd;">
+        <a class="navbar-brand" href="#">Hotel Molveno</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
+            <span class="navbar-toggler-icon"></span>
+        </button>
 
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav mr-auto">
-            <li class="nav-item">
-                <a class="nav-link" href="hotelMolvenoMenu.html">Home</a>
-            </li>
-            <li class="nav-item dropdown active">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
-                   aria-haspopup="true" aria-expanded="false">
-                    Menu<span class="sr-only">(current)</span>
-                </a>
-                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="reservation.html">Reservation</a>
-                    <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="payment.html">Payment</a>
-                    <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="room.html">Rooms</a>
-                    <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="guest.html">Guests</a>
-                    <div class="dropdown-divider"></div>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="hotelMolvenoMenu.html">Home</a>
+                </li>
+                <li class="nav-item dropdown active">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Menu<span class="sr-only">(current)</span>
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="reservation.html">Reservation</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="payment.html">Payment</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="room.html">Rooms</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="guest.html">Guests</a>
+                        <div class="dropdown-divider"></div>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">About Us</a>
+                </li>
+            </ul>
+            <form class="form-inline my-2 my-lg-0">
+                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+            </form>
+        </div>
+    </nav>
+    <div id="rooms">
+        <img src="https://media-cdn.tripadvisor.com/media/photo-s/06/4d/7c/01/grand-hotel-molveno.jpg"
+            style="margin-left: 3%; width:480px;height:480px;">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTXf2WG5JGA7hGWUoUj2ccjvbHyX3zEfTxyOSIdaZpZhAApRuAt"
+            style="align-content: right; width:460px;height:480px;">
+        <img src="https://www.visittrentino.info/website/var/tmp/image-thumbnails/1400000/1403379/thumb__demi_gallery_detail_landscape/hotel-molveno-2015-web-1098_2865162.jpeg"
+            style="align-content: right; margin-right:3%; width:460px;height:480px;">
+    </div>
+    <br />
+    <div class="container-fluid">
+        <form id="formEditRooms">
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="roomNumberEdit">Room Number</label>
+                    <input type="text" class="form-control" id="roomNumberEdit">
                 </div>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">About Us</a>
-            </li>
-        </ul>
-        <form class="form-inline my-2 my-lg-0">
-            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                <div class="form-group col-md-6">
+                    <label for="maxBedsEdit">Max Beds</label>
+                    <input type="number" class="form-control" id="maxBedsEdit">
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="roomPriceEdit">Room Price</label>
+                    <input type="number" class="form-control" id="roomPriceEdit">
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-14">
+                    <label for="roomSizeEdit">Room Size Type</label>
+                    <select id="roomSizeEdit">
+                        <option value="single">single</option>
+                        <option value="double">double</option>
+                        <option value="family">family</option>
+                        <option value="bride suite">bride suite</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-12">
+                    <label for="roomBudgetEdit">Room Budget Type</label>
+                    <select id="roomBudgetEdit">
+                        <option value="budget">budget</option>
+                        <option value="standard">standard</option>
+                        <option value="luxury">luxury</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-10">
+                    <label for="roomSceneEdit">Room Scene Type</label>
+                    <select id="roomSceneEdit">
+                        <option value="lake side">lake side</option>
+                        <option value="mountain side">mountain side</option>
+                    </select>
+                </div>
+            </div>
         </form>
     </div>
-</nav>
-<div id="rooms">
-    <img src="https://media-cdn.tripadvisor.com/media/photo-s/06/4d/7c/01/grand-hotel-molveno.jpg"
-         style="margin-left: 3%; width:480px;height:480px;">
-    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTXf2WG5JGA7hGWUoUj2ccjvbHyX3zEfTxyOSIdaZpZhAApRuAt"
-         style="align-content: right; width:460px;height:480px;">
-    <img src="https://www.visittrentino.info/website/var/tmp/image-thumbnails/1400000/1403379/thumb__demi_gallery_detail_landscape/hotel-molveno-2015-web-1098_2865162.jpeg"
-         style="align-content: right; margin-right:3%; width:460px;height:480px;">
-</div>
-<br/>
-<div class="container-fluid">
-<form id="formEditRooms">
-    <div class="form-row">
-        <div class="form-group col-md-6">
-            <label for="roomNumberEdit">Room Number</label>
-            <input type="text" class="form-control" id="roomNumberEdit">
-        </div>
-        <div class="form-group col-md-6">
-            <label for="maxBedsEdit">Max Beds</label>
-            <input type="number" class="form-control" id="maxBedsEdit">
-        </div>
-    </div>
-    <div class="form-row">
-        <div class="form-group col-md-6">
-            <label for="roomPriceEdit">Room Price</label>
-            <input type="number" class="form-control" id="roomPriceEdit">
-        </div>
-    </div>
-    <div class="form-row">
-        <div class="form-group col-md-14">
-            <label for="roomSizeEdit">Room Size Type</label>
-            <select id="roomSizeEdit"  >
-                <option value = "single">single</option>
-                <option value = "double">double</option>
-                <option value = "family">family</option>
-                <option value = "bride suite">bride suite</option>
-            </select>
-        </div>
-    </div>
-    <div class="form-row">
-        <div class="form-group col-md-12">
-            <label for="roomBudgetEdit">Room Budget Type</label>
-            <select id="roomBudgetEdit">
-                <option value = "budget">budget</option>
-                <option value = "standard">standard</option>
-                <option value = "luxury">luxury</option>
-            </select>
-        </div>
-    </div>
-    <div class="form-row">
-        <div class="form-group col-md-10">
-            <label for="roomSceneEdit">Room Scene Type</label>
-            <select id="roomSceneEdit">
-                <option value = "lake side">lake side</option>
-                <option value = "mountain side">mountain side</option>
-            </select>
-        </div>
-    </div>
-</form>
-</div>
 
-<div class="container-fluid">
-<table id="tableShowRoom" class="display" style="width:100%">
-    <thead>
-    <tr>
-        <th>Room Number</th>
-        <th>Max Beds</th>
-        <th>Room Price</th>
-        <th>Room Size Type</th>
-        <th>Room Budget Type</th>
-        <th>Room Scene Type</th>
-        <th>Action</th>
-        <th>Action</th>
-    </tr>
-    </thead>
-</table>
-</div>
+    <div class="container-fluid">
+        <table id="tableShowRoom" class="display" style="width:100%">
+            <thead>
+                <tr>
+                    <th>Room Number</th>
+                    <th>Max Beds</th>
+                    <th>Room Price</th>
+                    <th>Room Size Type</th>
+                    <th>Room Budget Type</th>
+                    <th>Room Scene Type</th>
+                    <th>Action</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+        </table>
+    </div>
 </body>
+
 </html>

@@ -1,6 +1,7 @@
 package com.hotelMolveno.hotelMolveno.controllers;
 
 import com.hotelMolveno.hotelMolveno.model.Guest;
+import com.hotelMolveno.hotelMolveno.model.Reservation;
 import com.hotelMolveno.hotelMolveno.repositories.GuestRepository;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,11 +21,6 @@ public class GuestController {
         return guestRepository.findAll();
     }
 
-    @GetMapping("/search")
-    public Guest getGuest(@RequestParam("firstName") String firstName, @RequestParam("lastName") String lastName) {
-        return guestRepository.findOneByFirstNameAndLastNameIgnoreCase(firstName, lastName);
-    }
-
     @GetMapping("/{id}")
     public Guest getGuest(@PathVariable Long id) {
         return guestRepository.findById(id).get();
@@ -32,10 +28,6 @@ public class GuestController {
 
     @PostMapping
     public Long addGuest(@RequestBody Guest guest) {
-        Guest existingGuest = guestRepository.findOneByFirstNameAndLastNameIgnoreCase(guest.getFirstName(), guest.getLastName());
-        if(existingGuest != null) {
-            return existingGuest.getId();
-        }
         return guestRepository.save(guest).getId();
     }
 

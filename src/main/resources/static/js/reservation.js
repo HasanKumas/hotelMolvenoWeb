@@ -1,10 +1,9 @@
 var reservationList;
-var data1;
 function getDate() {
     $("#checkInDate").datepicker("setDate", "0d");
-    $("#checkInDate").datepicker("minDate", "0d");
+    $(".checkInDate").datepicker("minDate", "0d");
     $("#checkOutDate").datepicker("setDate", "+1d");
-    $("#checkOutDate").datepicker("minDate", "+1d");
+    $(".checkOutDate").datepicker("minDate", "+1d");
     document.getElementById("numOfGuests").value = 2;
 }
 
@@ -27,7 +26,6 @@ function getRooms() {
         .fnDestroy();
     $("#tableContainer").show();
     $("#reservationListContainer").hide();
-    $("#reservationContainer").hide();
 
     var table1 = $("#tableReservation").DataTable({
         ajax: {
@@ -43,15 +41,19 @@ function getRooms() {
                 var return_data = new Array();
                 for (var i = 0; i < json.length; i++) {
                     return_data.push({
-                        id: json[i].id,
-                        roomSizeType: json[i].roomSizeType,
-                        roomBudgetType: json[i].roomBudgetType,
-                        roomSceneType: json[i].roomSceneType,
-                        maxBeds: json[i].maxBeds,
-                        totalPrice: GetTotalPrice(json[i].roomPrice),
-                        reserve: "<button id='reserveButton'>Reserve</button>",
-                        roomNumber: json[i].roomNumber
+                        'id': json[i].id,
+                        'roomSizeType': json[i].roomSizeType,
+                        'roomBudgetType': json[i].roomBudgetType,
+                        'roomSceneType': json[i].roomSceneType,
+                        'maxBeds': json[i].maxBeds,
+                        'totalPrice': GetTotalPrice(json[i].roomPrice),
+                        'reserve': "<button id=' reserveButton' >Reserve</button>",
+                        'roomNumber': json[i].roomNumber
                     });
+
+
+
+
                 }
                 return return_data;
             }
@@ -67,61 +69,40 @@ function getRooms() {
         ]
     });
 
+    $('#tableReservation tbody').off().on('click', 'button', function () {
+       $('#reservationAskMember').modal('show');
+        console.log(table1.row($(this).parents('tr')));
+//        var data1 = table1.row($(this).parents('tr')).data();
+//        $('#tableContainer').hide();
+//        $('#reservationContainer').show();
+//        document.getElementById("inputCheckIn").value = document.getElementById("checkInDate").value;
+//        document.getElementById("inputCheckOut").value = document.getElementById("checkOutDate").value;
+//        document.getElementById("inputNumOfGuest").value = document.getElementById("numOfGuests").value;;
+//        document.getElementById("inputTotalFlex").value = data1.totalPrice;
+//        document.getElementById("inputRoomID").value = data1.id;
+//        document.getElementById("inputRoomNumber").value = data1.roomNumber;
+    });
+
     $("#tableReservation tbody")
         .off()
         .on("click", "button", function () {
-
-            $('#reservationAskMember .modal-body').text("Are you a member already?");
-            $('#reservationAskMember').modal('show');
-            $('#confirmMembership').show();
-            $('#confirmNotMember').show();
-            $('#searchMembership').hide();
-            $('#cancelSearchMembership').hide();
-//            console.log(table1.row($(this).parents("tr")));
-            data1 = table1.row($(this).parents("tr")).data();
-//            $("#tableContainer").hide();
-//            $("#reservationContainer").show();
-//            document.getElementById("inputCheckIn").value = document.getElementById(
-//                "checkInDate"
-//            ).value;
-//            document.getElementById("inputCheckOut").value = document.getElementById(
-//                "checkOutDate"
-//            ).value;
-//            document.getElementById(
-//                "inputNumOfGuest"
-//            ).value = document.getElementById("numOfGuests").value;
-//            document.getElementById("inputTotalFlex").value = data1.totalPrice;
-//            document.getElementById("inputRoomID").value = data1.id;
-//            document.getElementById("inputRoomNumber").value = data1.roomNumber;
+            console.log(table1.row($(this).parents("tr")));
+            var data1 = table1.row($(this).parents("tr")).data();
+            $("#tableContainer").hide();
+            $("#reservationContainer").show();
+            document.getElementById("inputCheckIn").value = document.getElementById(
+                "checkInDate"
+            ).value;
+            document.getElementById("inputCheckOut").value = document.getElementById(
+                "checkOutDate"
+            ).value;
+            document.getElementById(
+                "inputNumOfGuest"
+            ).value = document.getElementById("numOfGuests").value;
+            document.getElementById("inputTotalFlex").value = data1.totalPrice;
+            document.getElementById("inputRoomID").value = data1.id;
+            document.getElementById("inputRoomNumber").value = data1.roomNumber;
         });
-}
-function reservationForm(){
-//    data1 = table1.row($(this).parents("tr")).data();
-    $("#tableContainer").hide();
-    $("#reservationContainer").show();
-    document.getElementById("inputCheckIn").value = document.getElementById(
-        "checkInDate"
-    ).value;
-    document.getElementById("inputCheckOut").value = document.getElementById(
-        "checkOutDate"
-    ).value;
-    document.getElementById(
-        "inputNumOfGuest"
-    ).value = document.getElementById("numOfGuests").value;
-    document.getElementById("inputTotalFlex").value = data1.totalPrice;
-    document.getElementById("inputRoomID").value = data1.id;
-    document.getElementById("inputRoomNumber").value = data1.roomNumber;
-    $('#reservationAskMember').modal('hide');
-}
-function checkGuestCompleteReservation() {
-
-            var content = $('#checkNameLastName').html();
-            $('#reservationAskMember .modal-body').html(content);
-            $('#reservationAskMember').modal('show');
-            $('#confirmMembership').hide();
-            $('#confirmNotMember').hide();
-            $('#searchMembership').show();
-            $('#cancelSearchMembership').show();
 }
 
 function getReservations() {
@@ -136,14 +117,14 @@ function getReservations() {
             url: "api/reservations",
             dataSrc: ""
         },
-        columns: [
-            { data: "id" },
-            { data: "guest.lastName" },
-            { data: "room.roomNumber" },
-            { data: "checkInDate" },
-            { data: "checkOutDate" },
-            { data: "numOfGuests" },
-            { data: "totalPrice" }
+        "columns": [
+            { "data": "id" },
+            { "data": "guest.lastName" },
+            { "data": "room.roomNumber" },
+            { "data": "checkInDate" },
+            { "data": "checkOutDate" },
+            { "data": "numOfGuests" },
+            { "data": "totalPrice" }
         ]
     });
 }
@@ -171,7 +152,9 @@ function completeReservation() {
                 checkOutDate: $("#inputCheckOut").val(),
                 numOfGuests: Number($("#inputNumOfGuest").val()),
                 totalPrice: Number($("#inputTotalFlex").val()),
-                room: { id: $("#inputRoomID").val() },
+                room: {
+                    id: Number($("#inputRoomID").val())
+                },
                 guest: {
                     id: guestId
                 }
@@ -223,7 +206,7 @@ function completeReservation() {
 }
 
 function deleteReservations() {
-    $("#tableInputRoom").hide();
+    $('#tableInputRoom').hide();
     $("#saveButton").hide();
     $("#editButton").hide();
     $("#idInput").show();
@@ -238,20 +221,20 @@ function deleteReservation() {
         url: "api/reservations/" + id,
         type: "DELETE",
         success: function () {
-            alert("We succeeded!");
-            $("#idInputReservation").val("");
+            alert('We succeeded!');
+            $("#idInputReservation").val('');
         }
     });
 }
 
 function changeRoomInput() {
-    $("#tableInputRoom").show();
+    $('#tableInputRoom').show();
     $("#editButton").show();
     $("#deleteInputTitle").show();
     $("#idInput").show();
     $("#deleteBtn").hide();
     $("#saveButton").hide();
-    $("#tableShowRoom").hide();
+    $('#tableShowRoom').hide();
 }
 
 function changeReservation() {
@@ -269,69 +252,46 @@ function changeReservation() {
         contentType: "application/json",
         data: jsonObject,
         success: function () {
-            alert("We succeeded!");
-            $("#checkInDate").val("");
-            $("#checkOutDate").val("");
-            $("#numOfGuests").val("2");
+            alert('We succeeded!');
+            $("#checkInDate").val('');
+            $("#checkOutDate").val('');
+            $("#numOfGuests").val('2');
         },
         error: function () {
-            alert("try again");
+            alert('try again');
         }
     });
 }
-function cancelReservationForm(){
-    $('#reservationAskMember').modal('hide');
-}
 
-function searchGuestAndFillForm(){
 
-    $('#reservationAskMember').modal('hide');
-    console.log("hey out");
-    $.ajax ({
-                url:"/api/guests/search?firstName=" +
-                document.getElementById("checkName").value +
-                "&lastName=" +
-                document.getElementById("checkLastName").value,
-                type: "GET",
-                contentType: "application/json",
-                success: function (guest) {
-                console.log("hey in");
-                            $("#tableContainer").hide();
-                            $("#reservationContainer").show();
-                            document.getElementById("inputCheckIn").value = document.getElementById(
-                                "checkInDate"
-                            ).value;
-                            document.getElementById("inputCheckOut").value = document.getElementById(
-                                "checkOutDate"
-                            ).value;
-                            document.getElementById(
-                                "inputNumOfGuest"
-                            ).value = document.getElementById("numOfGuests").value;
-                            document.getElementById("inputTotalFlex").value = data1.totalPrice;
-                            document.getElementById("inputRoomID").value = data1.id;
-                            document.getElementById("inputRoomNumber").value = data1.roomNumber;
-                            document.getElementById("inputLastName").value = guest.lastName;
-                            document.getElementById("inputName").value = guest.firstName;
-                            document.getElementById("inputEmail").value = guest.email;
-                            document.getElementById("inputPhone").value = guest.tel;
-                            document.getElementById("inputIDType").value = guest.idType;
-                            document.getElementById("inputAddress").value = guest.address;
-                        },
-                        error: function () {
-                            alert('something went wrong.');
-                        }
-            });
+function checkGuestCompleteReservation() {
+
+var content = $('#checkNameLastName').html();
+$('#reservationAskMember .modal-body').html(content);
+$('#reservationAskMember').modal('show');
+
+
 
 }
+
+
+
+
+
+
+
 
 $(document).ready(function () {
     $("#checkAvailabilityBtn").click(getRooms);
     $("#showReservations").click(getReservations);
     $("#completeReservationBtn").click(completeReservation);
-    $('#confirmMembership').click(checkGuestCompleteReservation);
-    $('#confirmNotMember').click(reservationForm);
-    $("#cancelSearchMembership").click(cancelReservationForm);
-    $("#searchMembership").click(searchGuestAndFillForm);
+        $('#confirmMembership').click(checkGuestCompleteReservation);
+        $('#confirmNotMember').click(reservationForm);
+$('#confirmNotMember').click(function(){
+$('#reservationAskMember').hide();
+
+});
+
 
     $(".datepicker").datepicker({
         autoclose: true,

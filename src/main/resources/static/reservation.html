@@ -1,5 +1,6 @@
 <!doctype html>
 <html lang="en">
+
 <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
@@ -14,13 +15,15 @@
     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css">
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
-          integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
-            integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
-            crossorigin="anonymous"></script>
+        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+        crossorigin="anonymous"></script>
 
-    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css" />
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>
+    <link rel="stylesheet" type="text/css"
+        href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css" />
+    <script
+        src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>
 
     <!--    buttons-->
     <link rel="stylesheet" href="https://cdn.datatables.net/buttons/1.6.1/css/buttons.dataTables.min.css">
@@ -32,7 +35,9 @@
 
     <title>Hotel Reservation</title>
 </head>
+
 <body id="reservation">
+
 <div class="modal fade" id="reservationAskMember" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
      aria-hidden="true">
     <div class="modal-dialog" role="document">
@@ -49,187 +54,204 @@
 
             </div>
             <div class="modal-footer">
-            <button type="button" class="btn btn-info" id="confirmMembership">Yes, I am!</button>
+                <button type="button" class="btn btn-info" id="confirmMembership">Yes, I am!</button>
                 <button type="button" class="btn btn-secondary" id="confirmNotMember">No</button>
-                <button type="button" class="btn btn-info" id="searchMembership">Search</button>
-                <button type="button" class="btn btn-secondary" id="cancelSearchMembership">Cancel</button>
 
             </div>
         </div>
     </div>
 </div>
-<form id="checkNameLastName">
-    <div class="form-group col-md-4">
-        <label for="checkLastName">Last Name</label>
-        <input type="text" class="form-control" id="checkLastName">
-    </div>
-    <div class="form-group col-md-4">
-        <label for="checkName">First Name</label>
-        <input type="text" class="form-control" id="checkName">
-    </div>
 
-</form>
+
+
+
+
 <nav class="navbar navbar-expand-lg navbar-light bg-light" style="background-color: #e3f2fd;">
     <a class="navbar-brand" href="#">Hotel Molveno</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="hotelMolvenoMenu.html">Home <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Menu
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="reservation.html">Reservation</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="#">Payment</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="room.html">Rooms</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="guest.html">Guests</a>
+                        <div class="dropdown-divider"></div>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">About Us</a>
+                </li>
+            </ul>
+            <form class="form-inline my-2 my-lg-0">
+                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+            </form>
+        </div>
+    </nav>
+    <br />
+    <div class="container" id="formCheck">
+        <div class="row">
+            <div class="form-group col-md-4">
+                <label for="checkInDate">Check In Date</label>
+                <input class="form-control datepicker" data-date-start-date="0d" id="checkInDate" placeholder="">
+            </div>
+            <div class="form-group col-md-4">
+                <label for="checkOutDate">Check Out Date</label>
+                <input class="form-control datepicker" data-date-start-date="+1d" id="checkOutDate" placeholder="">
+            </div>
+            <div class="form-group col-md-2">
+                <label for="numOfGuests">Guests</label>
+                <input type="number" class="form-control" id="numOfGuests" placeholder="2">
+            </div>
+            <div class="form-group col-md-1">
+                <br />
+                <button type="button" class="btn btn-primary" id="checkAvailabilityBtn">Check Availability</button>
+            </div>
+            <div class="container" style="float:right">
+                <button type="button" class="btn btn-primary" id="showReservations">Show Reservation List</button>
+            </div>
+        </div>
+    </div>
+    <br>
 
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav mr-auto">
-            <li class="nav-item active">
-                <a class="nav-link" href="hotelMolvenoMenu.html">Home <span class="sr-only">(current)</span></a>
-            </li>
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
-                   aria-haspopup="true" aria-expanded="false">
-                    Menu
-                </a>
-                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="reservation.html">Reservation</a>
-                    <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="payment.html">Payment</a>
-                    <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="room.html">Rooms</a>
-                    <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="guest.html">Guests</a>
-                    <div class="dropdown-divider"></div>
+
+    <div class="container-fluid" id="tableContainer">
+        <h1 style="color:white">AVAILABLE ROOMS</h1>
+        <table id="tableReservation" class="display" style="width:100%">
+            <thead>
+                <tr>
+                    <th>Room Number</th>
+                    <th>Room Size Type</th>
+                    <th>Room Budget Type</th>
+                    <th>Room Scene Type</th>
+                    <th>Number Of Beds</th>
+                    <th>Total Price</th>
+                    <th></th>
+                </tr>
+            </thead>
+        </table>
+    </div>
+
+    <div class="container-fluid" id="reservationListContainer">
+        <h1 style="color:white">RESERVATION LIST</h1>
+        <table id="tableReservationList" class="display" style="width:100%">
+            <thead>
+                <tr>
+                    <th>Reservation Number</th>
+                    <th>Guest Name</th>
+                    <th>Room Number</th>
+                    <th>Check In Date</th>
+                    <th>Check Out Date</th>
+                    <th>Number Of Guests</th>
+                    <th>Total Price</th>
+                </tr>
+            </thead>
+        </table>
+    </div>
+
+    <div class="container" id="reservationContainer">
+        <form>
+            <div class="form-row">
+                <div class="form-group col-md-4">
+                    <label for="inputCheckIn">Check In Date</label>
+                    <input class="form-control datepicker" id="inputCheckIn" disabled>
                 </div>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">About Us</a>
-            </li>
-        </ul>
-        <form class="form-inline my-2 my-lg-0">
-            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                <div class="form-group col-md-4">
+                    <label for="inputCheckOut">Check Out Date</label>
+                    <input class="form-control datepicker" id="inputCheckOut" disabled>
+                </div>
+                <div class="form-group col-md-4">
+                    <label for="inputNumOfGuest">Number Of Guests</label>
+                    <input type="number" class="form-control" id="inputNumOfGuest" disabled>
+                </div>
+                <div class="form-group col-md-4">
+                    <label for="inputTotalFlex">Total Flexible Price</label>
+                    <input type="number" class="form-control" id="inputTotalFlex">
+                </div>
+                <div class="form-group col-md-4">
+                    <label for="inputRoomID">Room ID</label>
+                    <input type="number" class="form-control" id="inputRoomID" disabled>
+                </div>
+                <div class="form-group col-md-4">
+                    <label for="inputRoomNumber">Room Number</label>
+                    <input type="text" class="form-control" id="inputRoomNumber" disabled>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="inputLastName">Last Name</label>
+                    <input type="text" class="form-control" id="inputLastName">
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="inputName">Name</label>
+                    <input type="text" class="form-control" id="inputName">
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="inputEmail">Email Address</label>
+                    <input type="email" class="form-control" id="inputEmail">
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="inputPhone">Phone Number</label>
+                    <input type="text" class="form-control" id="inputPhone">
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="inputIDType">ID Type</label>
+                    <input type="text" class="form-control" id="inputIDType">
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="inputIDNumber">ID Number</label>
+                    <input type="text" class="form-control" id="inputIDNumber">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="inputAddress">Address</label>
+                <input type="text" class="form-control" id="inputAddress" placeholder="Via Bettega 12">
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="inputCity">City</label>
+                    <input type="text" class="form-control" id="inputCity" placeholder="Molveno">
+                </div>
+                <div class="form-group col-md-2">
+                    <label for="inputZip">Post Code</label>
+                    <input type="text" class="form-control" id="inputZip" placeholder="38018">
+                </div>
+            </div>
+            <button type="button" class="btn btn-primary" id="completeReservationBtn">Complete Reservation</button>
         </form>
-    </div>
-</nav>
-<br/>
-<div class="container" id="formCheck">
-    <div class="row">
-        <div class="form-group col-md-4">
-            <label for="checkInDate">Check In Date</label>
-            <input class="form-control datepicker" data-date-start-date="0d" id="checkInDate" placeholder="">
-        </div>
-        <div class="form-group col-md-4">
-            <label for="checkOutDate">Check Out Date</label>
-            <input class="form-control datepicker" data-date-start-date="+1d" id="checkOutDate" placeholder="">
-        </div>
-        <div class="form-group col-md-2">
-            <label for="numOfGuests">Guests</label>
-            <input type="number" class="form-control" id="numOfGuests" placeholder="2">
-        </div>
-        <div class="form-group col-md-1">
-            <br/>
-            <button type="button" class="btn btn-primary" id="checkAvailabilityBtn">Check Availability</button>
-        </div>
-        <div class="container" style="float:right">
-            <button type="button" class="btn btn-primary" id="showReservations" >Show Reservation List</button>
-        </div>
-    </div>
-</div>
-<br>
 
 
-<div class="container-fluid" id="tableContainer">
-    <h1 style="color:white">AVAILABLE ROOMS</h1>
-    <table id="tableReservation" class="display" style="width:100%">
-        <thead>
-        <tr>
-            <th>Room Number</th>
-            <th>Room Size Type</th>
-            <th>Room Budget Type</th>
-            <th>Room Scene Type</th>
-            <th>Number Of Beds</th>
-            <th>Total Price</th>
-            <th></th>
-        </tr>
-        </thead>
-    </table>
-</div>
+    <form id="checkNameLastName">
+        <div class="form-group col-md-4">
+            <label for="checkName">Name</label>
+            <input type="text" class="form-control" id="checkName">
+        </div>
+        <div class="form-group col-md-4">
+            <label for="checkLastName">Last Name</label>
+            <input type="text" class="form-control" id="checkLastName">
+        </div>
 
-<div class="container-fluid" id="reservationListContainer">
-    <h1 style="color:white">RESERVATION LIST</h1>
-    <table id="tableReservationList" class="display" style="width:100%">
-        <thead>
-        <tr>
-            <th>Reservation Number</th>
-            <th>Guest Last Name</th>
-            <th>Room Number</th>
-            <th>Check In Date</th>
-            <th>Check Out Date</th>
-            <th>Number Of Guests</th>
-            <th>Total Price</th>
-        </tr>
-        </thead>
-    </table>
-</div>
-
-<div class="container" id="reservationContainer">
-<form>
-    <div class="form-row">
-        <div class="form-group col-md-4">
-            <label for="inputCheckIn">Check In Date</label>
-            <input class="form-control datepicker"  id="inputCheckIn" disabled>
-        </div>
-        <div class="form-group col-md-4">
-            <label for="inputCheckOut">Check Out Date</label>
-            <input class="form-control datepicker"  id="inputCheckOut" disabled>
-        </div>
-        <div class="form-group col-md-4">
-            <label for="inputNumOfGuest">Number Of Guests</label>
-            <input type="number" class="form-control" id="inputNumOfGuest" disabled>
-        </div>
-        <div class="form-group col-md-4">
-            <label for="inputTotalFlex">Total Flexible Price</label>
-            <input type="number" class="form-control" id="inputTotalFlex">
-        </div>
-        <div class="form-group col-md-4">
-            <label for="inputRoomID">Room ID</label>
-            <input type="number" class="form-control" id="inputRoomID" disabled>
-        </div>
-        <div class="form-group col-md-4">
-            <label for="inputRoomNumber">Room Number</label>
-            <input type="text" class="form-control" id="inputRoomNumber" disabled>
-        </div>
-    </div>
-    <div class="form-row">
-        <div class="form-group col-md-6">
-            <label for="inputLastName">Last Name</label>
-            <input type="text" class="form-control" id="inputLastName">
-        </div>
-        <div class="form-group col-md-6">
-            <label for="inputName">Name</label>
-            <input type="text" class="form-control" id="inputName">
-        </div>
-    </div>
-    <div class="form-row">
-        <div class="form-group col-md-6">
-            <label for="inputEmail">Email Address</label>
-            <input type="email" class="form-control" id="inputEmail">
-        </div>
-        <div class="form-group col-md-6">
-            <label for="inputPhone">Phone Number</label>
-            <input type="text" class="form-control" id="inputPhone">
-        </div>
-    </div>
-    <div class="form-row">
-        <div class="form-group col-md-6">
-            <label for="inputIDType">ID Type</label>
-            <input type="text" class="form-control" id="inputIDType">
-        </div>
-    </div>
-    <div class="form-group">
-        <label for="inputAddress">Address</label>
-        <input type="text" class="form-control" id="inputAddress" placeholder="">
-    </div>
-
-    <button type="button" class="btn btn-primary" id="completeReservationBtn">Complete Reservation</button>
-</form>
-
+    </form>
 </div>
 </body>
+
 </html>

@@ -19,7 +19,7 @@ public class RoomController {
     }
     @PostMapping
     public String addRoom(@RequestBody Room room) {
-        Room existingRoom = roomRepository.findOneByRoomNumberIgnoreCase(room.getRoomNumber());
+        Room existingRoom = roomRepository.findOneByRoomNumber(room.getRoomNumber());
         if(existingRoom != null) {
             return "The room number "+ room.getRoomNumber() + " is already exists. Please set another number.";
         }
